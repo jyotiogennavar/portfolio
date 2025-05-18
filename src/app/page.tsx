@@ -1,50 +1,46 @@
 import Image from "next/image";
 
-import {
-  Card,
-  CardDescription,
-  CardFooter,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { ArrowRightIcon } from "lucide-react";
-import Link from "next/link";
 
+import { Navbar } from "@/components/navbar";
 import TechStack from "@/components/techstack";
+import { Projects } from "@/components/projects";
 
 export default function Home() {
   return (
     <div className="max-w-[700px] mx-auto p-4">
-      <header className="flex justify-between items-center mb-4">
-        <h1 className="text-2xl font-bold">JO</h1>
-        <nav className="flex gap-x-4">
-          <Link href="/about">About</Link>
-          <Link href="/projects">Projects</Link>
-          <Link href="/writings">Writings</Link>
-        </nav>
-      </header>
-
+      <Navbar />
       <main className="mt-16 mb-8 flex gap-x-4">
         <div className="">
-          <Image src="/pic.png" alt="Jyoti Ogennavar" width={200} height={200} />
+          <Image
+            src="/pic.png"
+            alt="Jyoti Ogennavar"
+            width={200}
+            height={200}
+          />
         </div>
         <div className="flex flex-col justify-center">
           <h1 className="text-3xl">
             Hey, I’m <strong>Jyoti Ogennavar</strong>
           </h1>
-          <h3 className="text-lg mt-2 text-slate-500">Frontend Developer based in Pune</h3>
+          <h3 className="text-lg mt-2 text-slate-500">
+            Frontend Developer based in Pune
+          </h3>
         </div>
       </main>
       <Separator />
       <section className="mt-10 mb-8">
         <h2 className="text-sm text-slate-500">About Me</h2>
         <p className="mt-2">
-          Hi, I&apos;m Jyoti! As a Web Developer with 3+ years experience, I love crafting solutions that benefit the user and the business. I get excited about building pixel-perfect UI, performance optimizations, and smooth animations.
+          Hi, I&apos;m Jyoti! As a Web Developer with 3+ years experience, I
+          love crafting solutions that benefit the user and the business. I get
+          excited about building pixel-perfect UI, performance optimizations,
+          and smooth animations.
         </p>
       </section>
       <Separator />
       <section className="mt-10 mb-8">
-        
         <TechStack />
       </section>
       <Separator />
@@ -89,34 +85,7 @@ export default function Home() {
 
       <Separator />
       <section className="mt-10 mb-8">
-        <h2>Projects</h2>
-
-        <Card className="p-4 mt-4">
-          <CardTitle>Project 1</CardTitle>
-          <CardDescription>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
-            voluptatibus.
-          </CardDescription>
-          <CardFooter>
-            
-            <Link className="text-sm text-muted-foreground flex gap-x-2 justify-center" href="#">
-              View Project <ArrowRightIcon className="h-4 w-4" />
-            </Link>
-          </CardFooter>
-        </Card>
-
-        <Card className="p-4 mt-4">
-          <CardTitle>Project 2</CardTitle>
-          <CardDescription>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
-            voluptatibus.
-          </CardDescription>
-          <CardFooter>
-            <Link className="text-sm text-muted-foreground flex gap-x-2 justify-center" href="#">
-              View Project <ArrowRightIcon className="h-4 w-4" />
-            </Link>
-          </CardFooter>
-        </Card>
+        <Projects />
       </section>
 
       <Separator />
@@ -125,9 +94,7 @@ export default function Home() {
       </section>
 
       <Separator />
-      <footer className="mt-10 mb-8">
-        
-      </footer>
+      <footer className="mt-10 mb-8"></footer>
     </div>
   );
 }

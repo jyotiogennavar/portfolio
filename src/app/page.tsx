@@ -1,17 +1,17 @@
 import Image from "next/image";
+import { Projects } from "@/components/projects";
 
-import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 
 import { Navbar } from "@/components/navbar";
 import TechStack from "@/components/techstack";
-import { Projects } from "@/components/projects";
+import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 
 export default function Home() {
   return (
     <div className="max-w-[700px] mx-auto p-4">
       <Navbar />
-      <main className="mt-16 mb-8 flex gap-x-4">
+      <main className="mt-16 mb-8 flex gap-x-8">
         <div className="">
           <Image
             src="/pic.png"
@@ -73,10 +73,10 @@ export default function Home() {
       <Separator />
       <section className="mt-10 mb-8">
         <h2 className="text-sm text-slate-500">Experience</h2>
-        <p className="text-lg">
+        <p className="text-lg mt-2">
           <strong>Web Developer</strong> at miniOrange
         </p>
-        <p>
+        <p className="mt-4">
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque
           id error debitis vero eveniet autem dolores quisquam voluptatum nobis
           earum quia maiores voluptatem magni, fugit nulla soluta non cum at?

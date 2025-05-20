@@ -9,11 +9,9 @@
   }
 } */
 
-
-
 @layer base {
   :root {
-
+    font-family: var(--font-inter), sans-serif;
     --background: 0 0% 100%;
 
     --foreground: 222.2 84% 4.9%;
@@ -62,10 +60,9 @@
 
     --chart-5: 27 87% 67%;
 
-    --radius: 0.5rem
+    --radius: 0.5rem;
   }
   .dark {
-
     --background: 222.2 84% 4.9%;
 
     --foreground: 210 40% 98%;
@@ -112,11 +109,9 @@
 
     --chart-4: 280 65% 60%;
 
-    --chart-5: 340 75% 55%
+    --chart-5: 340 75% 55%;
   }
 }
-
-
 
 @layer base {
   * {
@@ -126,9 +121,8 @@
     @apply bg-background text-foreground;
   }
 
-  /* styles.css or globals.css */
-.tech-item {
-  @apply border border-slate-200 rounded-lg px-4 py-2 flex items-center gap-x-2 transition-all duration-200 hover:bg-slate-100 hover:border-slate-300;
-}
-
+  /* techstack li style */
+  .tech-item {
+    @apply border border-slate-200 rounded-lg px-4 py-2 flex items-center gap-x-2 transition-all duration-200 hover:bg-slate-100 hover:border-slate-300;
+  }
 }

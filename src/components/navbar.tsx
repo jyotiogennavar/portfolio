@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import { Menu, X, Home, User, Briefcase, PenTool, Mail } from "lucide-react"
+import { Menu, X, Briefcase, PenTool, Mail } from "lucide-react"
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -27,8 +27,7 @@ export const Navbar = () => {
   }, [lastScrollY])
 
   const navItems = [
-    { name: "Home", href: "#", icon: Home },
-    { name: "About", href: "#about", icon: User },
+
     { name: "Projects", href: "#projects", icon: Briefcase },
     { name: "Writing", href: "#writing", icon: PenTool },
     { name: "Contact", href: "#contact", icon: Mail },

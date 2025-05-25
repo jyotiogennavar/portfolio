@@ -11,10 +11,12 @@
 
 @layer base {
   body {
-    font-family: var(--font-inter), sans-serif;
+    font-family: var(--font-bricolage-grotesque), sans-serif;
   }
 
   :root {
+    --font-bricolage-grotesque: "Bricolage Grotesque", sans-serif;
+
     --background: 0 0% 100%;
 
     --foreground: 222.2 84% 4.9%;

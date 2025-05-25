@@ -6,7 +6,8 @@ import TechStack from "@/components/techstack"
 import { Card, CardDescription, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Mail, MapPin, Calendar, ExternalLink, Github, Linkedin, Twitter } from "lucide-react"
+import { Mail, Calendar, ExternalLink} from "lucide-react"
+import Footer from "@/components/footer"
 
 export default function Home() {
   return (
@@ -14,25 +15,21 @@ export default function Home() {
       <Navbar />
 
       {/* Hero Section - Improved responsiveness */}
-      <main className="mt-16 mb-12">
+      <main className="mt-20 mb-12">
         <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-center md:items-start">
           <div className="flex-shrink-0">
             <div className="relative">
-              <Image src="/pic.png" alt="Jyoti Ogennavar" width={200} height={200} className="rounded-lg" />
-              <div className="absolute -bottom-2 -right-2 bg-green-500 w-6 h-6 rounded-full border-4 border-white"></div>
+              <Image src="/pic.png" alt="Jyoti Ogennavar" width={120} height={120} className="rounded-full" />
+              
             </div>
           </div>
           <div className="flex flex-col justify-center text-center md:text-left">
-            <h1 className="text-3xl md:text-4xl font-bold">
+            <h1 className="text-2xl md:text-4xl font-bold">
               Hey, I&apos;m <span className="text-blue-600">Jyoti Ogennavar</span>
             </h1>
-            <h3 className="text-lg mt-2 text-slate-600 flex items-center justify-center md:justify-start gap-2">
-              <MapPin className="w-4 h-4" />
+            <h3 className="mt-2 text-slate-600 flex items-center justify-center md:justify-start md:text-lg gap-2">
               Frontend Developer based in Pune
             </h3>
-            <p className="mt-4 text-slate-600 max-w-md">
-              Passionate about creating beautiful, functional web experiences that make a difference.
-            </p>
             <div className="flex gap-3 mt-6 justify-center md:justify-start">
               <Button size="sm" className="gap-2">
                 <Mail className="w-4 h-4" />
@@ -94,20 +91,20 @@ export default function Home() {
       <section className="mt-10 mb-8">
         <h2 className="text-sm text-slate-500 uppercase tracking-wide font-medium">Things I Am Really Good At</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-          <Card className="p-6 hover:bg-slate-50 transition-colors rounded-lg">
+          <Card className="p-4 rounded-lg leading-relaxed">
             <CardTitle className="text-lg">Web Development</CardTitle>
             <CardDescription className="mt-3 text-slate-600">
               Building responsive and user-friendly websites using modern frameworks like React, Next.js, and
               TypeScript.
             </CardDescription>
           </Card>
-          <Card className="p-6 hover:bg-slate-50 transition-colors rounded-lg">
+          <Card className="p-4 rounded-lg leading-relaxed">
             <CardTitle className="text-lg">UI/UX Design</CardTitle>
             <CardDescription className="mt-3 text-slate-600">
               Creating intuitive user interfaces and seamless user experiences using Figma and design systems.
             </CardDescription>
           </Card>
-          <Card className="p-6 hover:bg-slate-50 transition-colors rounded-lg">
+          <Card className="p-4 rounded-lg leading-relaxed">
             <CardTitle className="text-lg">Problem Solving</CardTitle>
             <CardDescription className="mt-3 text-slate-600">
               Tackling complex challenges with clean, efficient code and algorithmic thinking.
@@ -214,27 +211,7 @@ export default function Home() {
       </section>
 
       <Separator />
-
-      {/* Footer - Enhanced */}
-      <footer className="mt-10 mb-8">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-slate-600 text-sm">© 2024 Jyoti Ogennavar. All rights reserved.</p>
-          <div className="flex gap-4">
-            <Button variant="ghost" size="sm" className="gap-2">
-              <Github className="w-4 h-4" />
-              GitHub
-            </Button>
-            <Button variant="ghost" size="sm" className="gap-2">
-              <Linkedin className="w-4 h-4" />
-              LinkedIn
-            </Button>
-            <Button variant="ghost" size="sm" className="gap-2">
-              <Twitter className="w-4 h-4" />
-              Twitter
-            </Button>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }

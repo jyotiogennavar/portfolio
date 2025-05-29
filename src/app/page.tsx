@@ -56,8 +56,8 @@ export default function Home() {
             animations.
           </p>
           <p className="text-slate-700 leading-relaxed">
-            When I&apos;m not coding, you&apos;ll find me exploring new technologies, contributing to open source projects, or
-            sharing my knowledge through technical writing.
+            When I&apos;m not coding, you&apos;ll find me exploring new technologies, consuming copious amounts of coffee, or trying
+            to share my knowledge through technical writing. I am always on a hunt for new hobbies :D
           </p>
         </div>
 

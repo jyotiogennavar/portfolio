@@ -1,10 +1,15 @@
 import type { Metadata } from "next";
 
-import { Bricolage_Grotesque } from "next/font/google";
+import { Bricolage_Grotesque, Caveat } from "next/font/google";
 import "./globals.css";
 
 const bricolage = Bricolage_Grotesque({
   variable: "--font-bricolage",
+  subsets: ["latin"],
+});
+
+const caveat = Caveat({
+  variable: "--font-caveat",
   subsets: ["latin"],
 });
 
@@ -20,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${bricolage.variable} antialiased`}>{children}</body>
+      <body className={`${bricolage.variable} ${caveat.variable} antialiased`}>{children}</body>
     </html>
   );
 }

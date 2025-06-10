@@ -15,40 +15,30 @@ export default function Home() {
       <Navbar />
 
       {/* Hero Section - Improved responsiveness */}
-      <main className="mt-20 mb-12">
-        <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-center md:items-start">
+      <main className="mt-20 mb-8">
+        <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-center md:items-center">
           <div className="flex-shrink-0">
+            <div className="">
+              <span className="font-caveat text-sm text-slate-600">Me with my favorite coffee</span>
+            </div>
+            
             <div className="relative">
-              <Image src="/pic.png" alt="Jyoti Ogennavar" width={120} height={120} className="rounded-full" />
-              
+              <Image src="/pic.png" alt="Jyoti Ogennavar" width={150} height={150} className="rounded-xl" />
             </div>
           </div>
-          <div className="flex flex-col justify-center text-center md:text-left">
-            <h1 className="text-2xl md:text-4xl font-bold">
-              Hey, I&apos;m <span className="text-blue-600">Jyoti Ogennavar</span>
+          <div className="flex flex-col justify-center text-center md:text-left h-full md:justify-center">
+            <h1 className="text-2xl md:text-4xl ">
+              Hey, I&apos;m <span className="font-bold">Jyoti Ogennavar</span>
             </h1>
             <h3 className="mt-2 text-slate-600 flex items-center justify-center md:justify-start md:text-lg gap-2">
               Frontend Developer based in Pune
             </h3>
-            <div className="flex gap-3 mt-6 justify-center md:justify-start">
-              <Button size="sm" className="gap-2">
-                <Mail className="w-4 h-4" />
-                Get in touch
-              </Button>
-              <Button variant="outline" size="sm" className="gap-2">
-                <ExternalLink className="w-4 h-4" />
-                View Resume
-              </Button>
-            </div>
           </div>
         </div>
       </main>
 
-      <Separator />
-
       {/* About Section - Enhanced */}
-      <section className="mt-10 mb-8">
-        <h2 className="text-sm text-slate-500 uppercase tracking-wide font-medium">About Me</h2>
+      <section className="mt-8 mb-8">
         <div className="mt-4 space-y-4">
           <p className="text-slate-700 leading-relaxed">
             Hi, I&apos;m Jyoti! As a Web Developer with 3+ years experience, I love crafting solutions that benefit the user
@@ -61,21 +51,6 @@ export default function Home() {
           </p>
         </div>
 
-        {/* Quick Stats */}
-        <div className="grid grid-cols-3 gap-4 mt-6">
-          <div className="text-center p-4 bg-slate-50 rounded-lg">
-            <div className="text-2xl font-bold text-blue-600">3+</div>
-            <div className="text-sm text-slate-600">Years Experience</div>
-          </div>
-          <div className="text-center p-4 bg-slate-50 rounded-lg">
-            <div className="text-2xl font-bold text-blue-600">20+</div>
-            <div className="text-sm text-slate-600">Projects Completed</div>
-          </div>
-          <div className="text-center p-4 bg-slate-50 rounded-lg">
-            <div className="text-2xl font-bold text-blue-600">5+</div>
-            <div className="text-sm text-slate-600">Technologies</div>
-          </div>
-        </div>
       </section>
 
       <Separator />
@@ -90,24 +65,23 @@ export default function Home() {
       {/* Skills Section - Improved responsiveness */}
       <section className="mt-10 mb-8">
         <h2 className="text-sm text-slate-500 uppercase tracking-wide font-medium">Things I Am Really Good At</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-2 mt-6">
           <Card className="p-4 rounded-lg leading-relaxed">
-            <CardTitle className="text-lg">Web Development</CardTitle>
+            <CardTitle className="text-lg">Responsive UI Development</CardTitle>
             <CardDescription className="mt-3 text-slate-600">
-              Building responsive and user-friendly websites using modern frameworks like React, Next.js, and
-              TypeScript.
+             I excel at building highly functional, visually appealing, and responsive user interfaces that are a delight to interact with.
             </CardDescription>
           </Card>
           <Card className="p-4 rounded-lg leading-relaxed">
-            <CardTitle className="text-lg">UI/UX Design</CardTitle>
+            <CardTitle className="text-lg">Pixel-Perfect Implementation</CardTitle>
             <CardDescription className="mt-3 text-slate-600">
-              Creating intuitive user interfaces and seamless user experiences using Figma and design systems.
+              I accurately translate design mockups into clean, high-fidelity, and maintainable front-end code.
             </CardDescription>
           </Card>
           <Card className="p-4 rounded-lg leading-relaxed">
-            <CardTitle className="text-lg">Problem Solving</CardTitle>
+            <CardTitle className="text-lg">Performance & UX Optimization</CardTitle>
             <CardDescription className="mt-3 text-slate-600">
-              Tackling complex challenges with clean, efficient code and algorithmic thinking.
+              I prioritize efficient code and asset loading to ensure fast page loads and a seamless user experience.
             </CardDescription>
           </Card>
         </div>
@@ -134,12 +108,6 @@ export default function Home() {
               cross-functional teams to deliver high-quality user experiences. Optimized application performance
               resulting in 40% faster load times.
             </p>
-            <div className="flex flex-wrap gap-2 mt-3">
-              <Badge variant="outline">React</Badge>
-              <Badge variant="outline">Next.js</Badge>
-              <Badge variant="outline">TypeScript</Badge>
-              <Badge variant="outline">Tailwind CSS</Badge>
-            </div>
           </div>
         </div>
       </section>

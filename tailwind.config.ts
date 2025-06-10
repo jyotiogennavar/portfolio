@@ -9,6 +9,9 @@ export default {
   ],
   theme: {
   	extend: {
+			fontFamily: {
+        caveat: ["Caveat", "cursive"],
+      },
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
@@ -58,5 +61,6 @@ export default {
   		}
   	}
   },
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   plugins: [require("tailwindcss-animate")],
 } satisfies Config;

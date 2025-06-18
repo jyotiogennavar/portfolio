@@ -11,6 +11,7 @@ import {
   JavaScript,
   ReactIcon,
 } from "@/components/icons";
+import { Wrench } from "lucide-react";
 
 const techStack = [
   { icon: <HTML5 />, label: "HTML" },
@@ -28,7 +29,7 @@ const techStack = [
 const TechStack: React.FC = () => {
   return (
     <>
-      <h2 className="text-sm text-slate-500">Technologies I Work With </h2>
+      <h2 className="text-sm text-slate-500 uppercase flex items-center gap-2"><Wrench  />TECHNOLOGIES I WORK WITH</h2>
 
       <ul className="list-none flex flex-wrap gap-2 mt-3">
         {techStack.map(({ icon, label }) => (

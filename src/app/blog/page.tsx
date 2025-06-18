@@ -1,13 +1,26 @@
 import Link from 'next/link'
+import { Navbar } from '@/components/navbar'
 import { getAllPosts } from '@/lib/mdx'
 
 export default function BlogPage() {
   const posts = getAllPosts()
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-8">Blog</h1>
-      <div className="grid gap-8">
+    <div className="max-w-[700px] mx-auto p-4">
+      <Navbar />
+
+      {/* Blog Header */}
+      <header className="mt-20 mb-8">
+        <h1 className="text-4xl font-bold mb-4">Blog</h1>
+        <p className="text-lg text-gray-700 mb-6">
+          Welcome to my blog! Here, I share my thoughts on web development, design,
+          and technology. Feel free to explore the articles below.
+        </p>
+      </header>
+
+      <p>The blog site is currently under construction.</p>
+
+      {/* <div className="grid gap-8">
         {posts.map((post) => (
           <article key={post.slug} className="border rounded-lg p-6 hover:shadow-lg transition-shadow">
             <Link href={`/blog/${post.slug}`}>
@@ -25,7 +38,7 @@ export default function BlogPage() {
             </Link>
           </article>
         ))}
-      </div>
+      </div> */}
     </div>
   )
 } 

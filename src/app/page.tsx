@@ -6,7 +6,14 @@ import TechStack from "@/components/techstack";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Mail, Calendar, ExternalLink } from "lucide-react";
+import {
+  Mail,
+  Calendar,
+  ExternalLink,
+  Sparkles,
+  Telescope,
+  Sprout,
+} from "lucide-react";
 import Footer from "@/components/footer";
 
 export default function Home() {
@@ -61,8 +68,8 @@ export default function Home() {
 
       {/* Skills Section - Improved responsiveness */}
       <section className="mt-10 mb-8">
-        <h2 className="text-sm text-slate-500 uppercase tracking-wide font-medium">
-          Things I Am Really Good At
+        <h2 className="text-sm text-slate-500 uppercase tracking-wide font-medium flex items-center gap-2">
+          <Sparkles /> Things I Am Really Good At
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-2 mt-6">
           <Card className="leading-relaxed p-4 rounded-sm">
@@ -126,7 +133,7 @@ export default function Home() {
         <h2 className="text-sm text-slate-500 uppercase tracking-wide font-medium">
           Projects
         </h2>
-        <p className="text-slate-600">
+        <p className="text-slate-600 mt-4">
           Working on something exciting! Coming soon.
         </p>
         {/* <Projects /> */}
@@ -136,8 +143,8 @@ export default function Home() {
 
       {/* Writings Section - Added content */}
       <section className="mt-10 mb-8">
-        <h2 className="text-sm text-slate-500 uppercase tracking-wide font-medium">
-          Latest Writings
+        <h2 className="text-sm text-slate-500 uppercase tracking-wide font-medium flex items-center gap-2">
+          <Sprout /> Writings
         </h2>
         <div className="mt-6 space-y-4">
           <article className="p-4 border rounded-lg hover:bg-slate-50 transition-colors">
@@ -175,7 +182,15 @@ export default function Home() {
           <Button variant="outline">View All Articles</Button>
         </div>
       </section>
-
+      <Separator />
+      {/* Currently Learning Section - New */}
+      <section>
+        <h2 className="text-sm text-slate-500 uppercase tracking-wide font-medium flex items-center gap-2">
+          <Telescope /> Currently learning
+        </h2>
+        <p className="text-slate-600 mt-6">Animations of the Web by Emil</p>
+        <p className="text-slate-600  mt-2">Road to Next JS by Rob</p>
+      </section>
       <Separator />
 
       {/* Tech Stack */}

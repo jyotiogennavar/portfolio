@@ -10,6 +10,8 @@ import {
   Figma,
   JavaScript,
   ReactIcon,
+  TypeScript,
+
 } from "@/components/icons";
 import { Wrench } from "lucide-react";
 
@@ -24,12 +26,14 @@ const techStack = [
   { icon: <GitHub />, label: "GitHub" },
   { icon: <Figma />, label: "Figma" },
   { icon: <Motion />, label: "Framer Motion" },
+  { icon: <TypeScript />, label: "TypeScript" },
+
 ];
 
 const TechStack: React.FC = () => {
   return (
     <>
-      <h2 className="text-sm text-slate-500 uppercase flex items-center gap-2"><Wrench  />TECHNOLOGIES I WORK WITH</h2>
+      <h2 className="text-sm text-slate-500 uppercase flex items-center gap-2"><Wrench  size={16} color="#64748b" />TECHNOLOGIES I WORK WITH</h2>
 
       <ul className="list-none flex flex-wrap gap-2 mt-3">
         {techStack.map(({ icon, label }) => (

@@ -1,26 +1,66 @@
-import Image from "next/image";
+"use client";
 
+import Image from "next/image";
+import { motion, easeOut } from "framer-motion";
 // import { Navbar } from "@/components/navbar";
 import TechStack from "@/components/techstack";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import {
-  Mail,
-  Calendar,
-  Telescope,
-  Sprout,
-  Sparkle,
-} from "lucide-react";
+import { Mail, Calendar, Telescope, Sprout, Sparkle } from "lucide-react";
 import Footer from "@/components/footer";
 import Link from "next/link";
 
+// Animation variants
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: easeOut,
+    },
+  },
+};
+
 export default function Home() {
+  // const handleContactClick = () => {
+  //   window.location.href =
+  //     "mailto:jyoti.ogennavar@example.com?subject=Project Inquiry&body=Hi Jyoti, I'd like to discuss a project opportunity with you.";
+  // };
+
+  // const handleResumeDownload = () => {
+  //   // Create a link element and trigger download
+  //   const link = document.createElement("a");
+  //   link.href = "/resume-jyoti-ogennavar.pdf";
+  //   link.download = "Jyoti-Ogennavar-Resume.pdf";
+  //   document.body.appendChild(link);
+  //   link.click();
+  //   document.body.removeChild(link);
+  // };
+
   return (
-    <div className="max-w-[700px] mx-auto p-4">
+    <motion.div
+      className="max-w-[700px] mx-auto p-4"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
       {/* <Navbar /> */}
 
-      {/* Hero Section - Improved responsiveness */}
-      <main className="mt-20 mb-8">
+      {/* Hero Section */}
+      <motion.main className="mt-20 mb-8" variants={itemVariants}>
         <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-center md:items-center">
           <div className="flex-shrink-0">
             <div className="relative">
@@ -42,10 +82,10 @@ export default function Home() {
             </h3>
           </div>
         </div>
-      </main>
+      </motion.main>
 
-      {/* About Section - Enhanced */}
-      <section className="mt-8 mb-8">
+      {/* About Section*/}
+      <motion.section className="mt-8 mb-8" variants={itemVariants}>
         <div className="mt-4 space-y-4">
           <p className="text-slate-700 leading-relaxed">
             Hi, I&apos;m Jyoti! As a Web Developer with 3+ years of experience,
@@ -55,9 +95,9 @@ export default function Home() {
             coffee, or trying to share my knowledge through technical writing.
           </p>
         </div>
-      </section>
+      </motion.section>
       {/* Skills Section - Improved responsiveness */}
-      <section className="mt-10">
+      <motion.section className="mt-10" variants={itemVariants}>
         <h2 className="text-sm text-slate-500 uppercase tracking-wide font-medium flex items-center gap-2">
           <Sparkle size={16} color="#64748b" /> Things I Am Really Good At
         </h2>
@@ -89,20 +129,26 @@ export default function Home() {
             </CardDescription>
           </Card>
         </div>
-      </section>
+      </motion.section>
       {/* Projects */}
-      <section className="mt-10">
+      <motion.section className="mt-10" variants={itemVariants}>
         <h2 className="text-sm text-slate-500 uppercase tracking-wide font-medium">
           Projects
         </h2>
-        <p className="text-slate-600 mt-4">
-          Working on something exciting! Coming soon.
-        </p>
+        <motion.div
+          className="mt-6 p-6 border-2 border-dashed border-slate-200 rounded-lg text-center"
+          whileHover={{ borderColor: "#3b82f6" }}
+          transition={{ duration: 0.2 }}
+        >
+          <p className="text-slate-600">
+            🚀 Working on something exciting! Coming soon.
+          </p>
+        </motion.div>
         {/* <Projects /> */}
-      </section>
+      </motion.section>
 
       {/* Writings Section - Added content */}
-      <section className="mt-10">
+      <motion.section className="mt-10" variants={itemVariants}>
         <h2 className="text-sm text-slate-500 uppercase tracking-wide font-medium flex items-center gap-2">
           <Sprout size={16} color="#64748b" /> Writings
         </h2>
@@ -147,10 +193,10 @@ export default function Home() {
             More articles coming soon! Stay tuned.
           </p>
         </div>
-      </section>
+      </motion.section>
 
       {/* Currently Learning Section - New */}
-      <section className="mt-10">
+      <motion.section className="mt-10" variants={itemVariants}>
         <h2 className="text-sm text-slate-500 uppercase tracking-wide font-medium flex items-center gap-2">
           <Telescope size={16} color="#64748b" /> Currently learning
         </h2>
@@ -174,15 +220,15 @@ export default function Home() {
             Road to Next JS by Robin Wieruch
           </p>
         </Link>
-      </section>
+      </motion.section>
 
       {/* Tech Stack */}
-      <section className="mt-10">
+      <motion.section className="mt-10" variants={itemVariants}>
         <TechStack />
-      </section>
+      </motion.section>
 
       {/* Contact/CTA Section - New */}
-      <section className="mt-10">
+      <motion.section className="mt-10">
         <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-8 text-center">
           <h2 className="text-2xl font-bold mb-4">Let&apos;s Work Together</h2>
           <p className="text-slate-600 mb-6 max-w-md mx-auto">
@@ -200,9 +246,9 @@ export default function Home() {
             </Button>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       <Footer />
-    </div>
+    </motion.div>
   );
 }

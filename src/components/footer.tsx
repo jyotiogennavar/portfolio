@@ -18,7 +18,7 @@ const socialLinks = [
   },
   {
     name: "Twitter",
-    href: "https://twitter.com/jyoti_ogennavar",
+    href: "https://x.com/JOgennavar",
     icon: Twitter,
   },
   {

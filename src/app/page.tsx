@@ -6,7 +6,7 @@ import { motion, easeOut } from "framer-motion";
 import TechStack from "@/components/techstack";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Mail, Calendar, Telescope, Sprout, Sparkle } from "lucide-react";
+import { Mail, File, Telescope, Sprout, Sparkle } from "lucide-react";
 import Footer from "@/components/footer";
 import Link from "next/link";
 
@@ -28,27 +28,27 @@ const itemVariants = {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.6,
+      duration: 0.4,
       ease: easeOut,
     },
   },
 };
 
 export default function Home() {
-  // const handleContactClick = () => {
-  //   window.location.href =
-  //     "mailto:jyoti.ogennavar@example.com?subject=Project Inquiry&body=Hi Jyoti, I'd like to discuss a project opportunity with you.";
-  // };
+  const handleContactClick = () => {
+    window.location.href =
+      "mailto:jyotiogennavar31@gmail.com?subject=Project Inquiry&body=Hi Jyoti, I'd like to discuss a project opportunity with you.";
+  };
 
-  // const handleResumeDownload = () => {
-  //   // Create a link element and trigger download
-  //   const link = document.createElement("a");
-  //   link.href = "/resume-jyoti-ogennavar.pdf";
-  //   link.download = "Jyoti-Ogennavar-Resume.pdf";
-  //   document.body.appendChild(link);
-  //   link.click();
-  //   document.body.removeChild(link);
-  // };
+  const handleResumeDownload = () => {
+    // Create a link element and trigger download
+    const link = document.createElement("a");
+    link.href = "/resume-jyoti-ogennavar.pdf";
+    link.download = "Jyoti-Ogennavar-Resume.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <motion.div
@@ -65,11 +65,11 @@ export default function Home() {
           <div className="flex-shrink-0">
             <div className="relative">
               <Image
-                src="/jyoti-pic.webp"
+                src="/blob.png"
                 alt="Jyoti Ogennavar"
                 width={100}
                 height={100}
-                className="rounded-xl"
+                className="rounded-full"
               />
             </div>
           </div>
@@ -77,9 +77,9 @@ export default function Home() {
             <h1 className="text-2xl md:text-4xl ">
               Hey, I&apos;m <span className="font-bold">Jyoti Ogennavar</span>
             </h1>
-            <h3 className="mt-2 text-slate-600 flex items-center justify-center md:justify-start md:text-lg gap-2">
+            <p className="mt-2 text-slate-600 flex items-center justify-center md:justify-start md:text-lg gap-2">
               Frontend Developer based in Pune
-            </h3>
+            </p>
           </div>
         </div>
       </motion.main>
@@ -229,20 +229,24 @@ export default function Home() {
 
       {/* Contact/CTA Section - New */}
       <motion.section className="mt-10">
-        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-8 text-center">
+        <div className="bg-gradient-to-r from-pink-50 to-rose-50 rounded-lg p-8 text-center">
           <h2 className="text-2xl font-bold mb-4">Let&apos;s Work Together</h2>
           <p className="text-slate-600 mb-6 max-w-md mx-auto">
             I&apos;m always interested in new opportunities and exciting
             projects. Let&apos;s discuss how we can bring your ideas to life.
           </p>
           <div className="flex gap-3 justify-center">
-            <Button className="gap-2">
+            <Button className="gap-2" onClick={handleContactClick}>
               <Mail className="w-4 h-4" />
               Contact Me
             </Button>
-            <Button variant="outline" className="gap-2">
-              <Calendar className="w-4 h-4" />
-              Schedule Call
+            <Button
+              variant="outline"
+              className="gap-2"
+              onClick={handleResumeDownload}
+            >
+              <File className="w-4 h-4" />
+              Resume
             </Button>
           </div>
         </div>

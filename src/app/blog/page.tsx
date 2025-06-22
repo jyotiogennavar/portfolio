@@ -1,9 +1,9 @@
-import Link from 'next/link'
+// import Link from 'next/link'
 import { Navbar } from '@/components/navbar'
-import { getAllPosts } from '@/lib/mdx'
+// import { getAllPosts } from '@/lib/mdx'
 
 export default function BlogPage() {
-  const posts = getAllPosts()
+  // const posts = getAllPosts()
 
   return (
     <div className="max-w-[700px] mx-auto p-4">

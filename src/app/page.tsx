@@ -88,7 +88,7 @@ export default function Home() {
       <motion.section className="mt-8 mb-8" variants={itemVariants}>
         <div className="mt-4 space-y-4">
           <p className="text-slate-700 leading-relaxed">
-            Hi, I&apos;m Jyoti! As a Web Developer with 3+ years of experience,
+            Hi, as a Web Developer with 3+ years of experience,
             I&apos;m passionate about crafting effective solutions that benefit
             both users and businesses. When I&apos;m not coding, you&apos;ll
             find me exploring new technologies, consuming copious amounts of

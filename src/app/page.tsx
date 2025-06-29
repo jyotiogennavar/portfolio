@@ -65,11 +65,11 @@ export default function Home() {
           <div className="flex-shrink-0">
             <div className="relative">
               <Image
-                src="/blob.png"
+                src="/jyoti.webp"
                 alt="Jyoti Ogennavar"
-                width={100}
-                height={100}
-                className="rounded-full"
+                width={150}
+                height={150}
+                className="rounded-xl"
               />
             </div>
           </div>
@@ -237,7 +237,7 @@ export default function Home() {
           </p>
           <div className="flex gap-3 justify-center">
             <Button className="gap-2" onClick={handleContactClick}>
-              <Mail className="w-4 h-4" />
+              <Mail className="w-3 h-3" />
               Contact Me
             </Button>
             <Button

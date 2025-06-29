@@ -35,7 +35,7 @@ const TechStack: React.FC = () => {
     <>
       <h2 className="text-sm text-slate-500 uppercase flex items-center gap-2"><Wrench  size={16} color="#64748b" />TECHNOLOGIES I WORK WITH</h2>
 
-      <ul className="list-none flex flex-wrap gap-2 mt-3">
+      <ul className="list-none flex flex-wrap gap-2 mt-6">
         {techStack.map(({ icon, label }) => (
           <li key={label} className="tech-item">
               {icon} {label}

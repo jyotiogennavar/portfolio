@@ -6,9 +6,10 @@ import { motion, easeOut } from "framer-motion";
 import TechStack from "@/components/techstack";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Mail, File, Telescope, Sprout, Sparkle } from "lucide-react";
+import { Mail, File, Telescope, Sprout, Sparkle, Puzzle } from "lucide-react";
 import Footer from "@/components/footer";
 import Link from "next/link";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 // Animation variants
 const containerVariants = {
@@ -37,7 +38,7 @@ const itemVariants = {
 export default function Home() {
   const handleContactClick = () => {
     window.location.href =
-      "mailto:jyotiogennavar31@gmail.com?subject=Project Inquiry&body=Hi Jyoti, I'd like to discuss a project opportunity with you.";
+      "mailto:hey@jyotiogennavar.com?subject=Project Inquiry&body=Hi Jyoti, I'd like to discuss a project opportunity with you.";
   };
 
   const handleResumeDownload = () => {
@@ -52,11 +53,16 @@ export default function Home() {
 
   return (
     <motion.div
-      className="max-w-[700px] mx-auto p-4"
+      className="max-w-[700px] mx-auto p-4 bg-background text-foreground"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
     >
+      {/* Theme Toggle */}
+      <div className="flex justify-end mb-4">
+        <ThemeToggle />
+      </div>
+
       {/* <Navbar /> */}
 
       {/* Hero Section */}
@@ -77,7 +83,7 @@ export default function Home() {
             <h1 className="text-2xl md:text-4xl ">
               Hey, I&apos;m <span className="font-bold">Jyoti Ogennavar</span>
             </h1>
-            <p className="mt-2 text-slate-600 flex items-center justify-center md:justify-start md:text-lg gap-2">
+            <p className="mt-2 text-stone-600 dark:text-stone-400 flex items-center justify-center md:justify-start md:text-lg gap-2">
               Frontend Developer based in Pune
             </p>
           </div>
@@ -87,7 +93,7 @@ export default function Home() {
       {/* About Section*/}
       <motion.section className="mt-8 mb-8" variants={itemVariants}>
         <div className="mt-4 space-y-4">
-          <p className="text-slate-700 leading-relaxed">
+          <p className="text-stone-700 dark:text-stone-300 leading-relaxed">
             Hi, as a Web Developer with 3+ years of experience,
             I&apos;m passionate about crafting effective solutions that benefit
             both users and businesses. When I&apos;m not coding, you&apos;ll
@@ -98,15 +104,15 @@ export default function Home() {
       </motion.section>
       {/* Skills Section - Improved responsiveness */}
       <motion.section className="mt-10" variants={itemVariants}>
-        <h2 className="text-sm text-slate-500 uppercase tracking-wide font-medium flex items-center gap-2">
-          <Sparkle size={16} color="#64748b" /> Things I Am Really Good At
+        <h2 className="text-sm text-stone-500 dark:text-stone-400 uppercase tracking-wide font-medium flex items-center gap-2">
+          <Sparkle size={16} className="text-stone-500 dark:text-stone-400" /> Things I Am Really Good At
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-2 mt-6">
           <Card className="leading-relaxed p-4 rounded-sm">
             <CardTitle className="text-lg">
               Responsive & Accessible Design
             </CardTitle>
-            <CardDescription className="mt-3 text-slate-600">
+            <CardDescription className="mt-3 text-stone-600 dark:text-stone-400">
               Crafting intuitive user interfaces that adapt across all devices
               while prioritizing accessibility.
             </CardDescription>
@@ -115,7 +121,7 @@ export default function Home() {
             <CardTitle className="text-lg">
               Pixel-Perfect Implementation
             </CardTitle>
-            <CardDescription className="mt-3 text-slate-600">
+            <CardDescription className="mt-3 text-stone-600 dark:text-stone-400">
               Bringing designs to life with precision and attention to detail
             </CardDescription>
           </Card>
@@ -123,7 +129,7 @@ export default function Home() {
             <CardTitle className="text-lg">
               Performance & UX Optimization
             </CardTitle>
-            <CardDescription className="mt-3 text-slate-600">
+            <CardDescription className="mt-3 text-stone-600 dark:text-stone-400">
               Optimizing for accessibility, speed, and exceptional user
               experience
             </CardDescription>
@@ -132,15 +138,16 @@ export default function Home() {
       </motion.section>
       {/* Projects */}
       <motion.section className="mt-10" variants={itemVariants}>
-        <h2 className="text-sm text-slate-500 uppercase tracking-wide font-medium">
+        <h2 className="text-sm text-stone-500 dark:text-stone-400 uppercase tracking-wide font-medium flex items-center gap-2">
+          <Puzzle size={16} className="text-stone-500 dark:text-stone-400" />
           Projects
         </h2>
         <motion.div
-          className="mt-6 p-6 border-2 border-dashed border-slate-200 rounded-lg text-center"
+          className="mt-6 p-6 border-2 border-dashed border-stone-200 dark:border-stone-700 rounded-lg text-center"
           whileHover={{ borderColor: "#3b82f6" }}
           transition={{ duration: 0.2 }}
         >
-          <p className="text-slate-600">
+          <p className="text-stone-600 dark:text-stone-400">
             🚀 Working on something exciting! Coming soon.
           </p>
         </motion.div>
@@ -149,8 +156,8 @@ export default function Home() {
 
       {/* Writings Section - Added content */}
       <motion.section className="mt-10" variants={itemVariants}>
-        <h2 className="text-sm text-slate-500 uppercase tracking-wide font-medium flex items-center gap-2">
-          <Sprout size={16} color="#64748b" /> Writings
+        <h2 className="text-sm text-stone-500 dark:text-stone-400 uppercase tracking-wide font-medium flex items-center gap-2">
+          <Sprout size={16} className="text-stone-500 dark:text-stone-400" /> Writings
         </h2>
 
         <div className="mt-6 space-y-6">
@@ -165,7 +172,7 @@ export default function Home() {
                 Boosting Website Visibility: A Complete Guide to On-Page SEO for
                 Web Developers
               </h3>
-              <p className="text-sm text-slate-600 mt-2">
+              <p className="text-sm text-stone-600 dark:text-stone-400 mt-2">
                 Learn how to optimize your website&apos;s on-page SEO to improve
                 visibility and ranking on search engines.
               </p>
@@ -182,14 +189,14 @@ export default function Home() {
               <h3 className="font-semibold">
                 Website Sitemaps 101: your website’s guide to success
               </h3>
-              <p className="text-sm text-slate-600 mt-2">
+              <p className="text-sm text-stone-600 dark:text-stone-400 mt-2">
                 Discover the importance of sitemaps for SEO and user experience,
                 and learn how to create and submit them effectively.
               </p>
             </article>
           </Link>
 
-          <p className="text-slate-600">
+          <p className="text-stone-600 dark:text-stone-400">
             More articles coming soon! Stay tuned.
           </p>
         </div>
@@ -197,8 +204,8 @@ export default function Home() {
 
       {/* Currently Learning Section - New */}
       <motion.section className="mt-10" variants={itemVariants}>
-        <h2 className="text-sm text-slate-500 uppercase tracking-wide font-medium flex items-center gap-2">
-          <Telescope size={16} color="#64748b" /> Currently learning
+        <h2 className="text-sm text-stone-500 dark:text-stone-400 uppercase tracking-wide font-medium flex items-center gap-2">
+          <Telescope size={16} className="text-stone-500 dark:text-stone-400" /> Currently learning
         </h2>
         <Link
           href="https://animations.dev/"
@@ -206,7 +213,7 @@ export default function Home() {
           title="Animations of the Web by Emil"
           className="hover:underline block"
         >
-          <p className="text-slate-600 mt-6">
+          <p className="text-stone-600 dark:text-stone-400 mt-6">
             Animations on the Web by Emil Kowalskil
           </p>
         </Link>
@@ -216,7 +223,7 @@ export default function Home() {
           title="Road to Next JS by Rob"
           className="hover:underline block mt-2"
         >
-          <p className="text-slate-600 mt-2">
+          <p className="text-stone-600 dark:text-stone-400 mt-2">
             Road to Next JS by Robin Wieruch
           </p>
         </Link>
@@ -229,9 +236,9 @@ export default function Home() {
 
       {/* Contact/CTA Section - New */}
       <motion.section className="mt-10">
-        <div className="bg-gradient-to-r from-pink-50 to-rose-50 rounded-lg p-8 text-center">
+        <div className="bg-gradient-to-r from-stone-200 to-stone-100 dark:from-stone-800 dark:to-stone-700 rounded-lg p-8 text-center">
           <h2 className="text-2xl font-bold mb-4">Let&apos;s Work Together</h2>
-          <p className="text-slate-600 mb-6 max-w-md mx-auto">
+          <p className="text-stone-600 dark:text-stone-300 mb-6 max-w-md mx-auto">
             I&apos;m always interested in new opportunities and exciting
             projects. Let&apos;s discuss how we can bring your ideas to life.
           </p>

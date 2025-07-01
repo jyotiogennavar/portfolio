@@ -33,11 +33,11 @@ const techStack = [
 const TechStack: React.FC = () => {
   return (
     <>
-      <h2 className="text-sm text-slate-500 dark:text-slate-400 uppercase flex items-center gap-2"><Wrench  size={16} className="text-slate-500 dark:text-slate-400" />TECHNOLOGIES I WORK WITH</h2>
+      <h2 className="text-sm text-stone-500 dark:text-stone-400 uppercase flex items-center gap-2"><Wrench  size={16} className="text-stone-500 dark:text-stone-400" />TECHNOLOGIES I WORK WITH</h2>
 
       <ul className="list-none flex flex-wrap gap-2 mt-6">
         {techStack.map(({ icon, label }) => (
-          <li key={label} className="border border-slate-200 rounded-lg px-4 py-2 flex items-center gap-x-2 ">
+          <li key={label} className="border border-text-card-foreground rounded-lg px-4 py-2 flex items-center gap-x-2 ">
               {icon} {label}
           </li>
         ))}

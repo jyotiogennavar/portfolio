@@ -60,7 +60,7 @@ const itemVariants = {
 const Footer = () => {
   return (
     <motion.footer
-      className="mt-16 mb-8 pt-8 border-t border-slate-200"
+      className="mt-16 mb-8 pt-8 border-t border-stone-200"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
@@ -73,7 +73,7 @@ const Footer = () => {
               <Button
                 variant="ghost"
                 size="sm"
-                className="gap-2 hover:bg-blue-50 hover:text-blue-600 transition-colors"
+                className="gap-2 hover:bg-stone-50 hover:text-stone-600 transition-colors"
                 asChild
               >
                 <Link href={href} target="_blank" rel="noopener noreferrer">
@@ -86,8 +86,8 @@ const Footer = () => {
         </motion.div>
 
         <motion.div className="text-center space-y-2" variants={itemVariants}>
-          <p className="text-slate-600 text-sm">© {new Date().getFullYear()} Jyoti Ogennavar. All rights reserved.</p>
-          <p className="text-slate-500 text-xs">Built with Next.js, Tailwind CSS, and Framer Motion ✨</p>
+          <p className="text-stone-600 text-sm">© {new Date().getFullYear()} Jyoti Ogennavar. All rights reserved.</p>
+          <p className="text-stone-500 text-xs">Built with Next.js, Tailwind CSS, and Framer Motion ✨</p>
         </motion.div>
       </div>
     </motion.footer>

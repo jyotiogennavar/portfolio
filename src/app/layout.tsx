@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Bricolage_Grotesque, Caveat } from "next/font/google"
 import "./globals.css"
+import { ThemeProvider } from "@/components/theme-provider"
 
 const bricolage = Bricolage_Grotesque({
   variable: "--font-bricolage",
@@ -56,7 +57,7 @@ export const metadata: Metadata = {
     siteName: "Jyoti Ogennavar Portfolio",
     images: [
       {
-        url: "/og-image.jpg", // You'll need to create this image (1200x630px)
+        url: "/og-image.png", 
         width: 1200,
         height: 630,
         alt: "Jyoti Ogennavar - Frontend Developer",
@@ -67,8 +68,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Jyoti Ogennavar - Frontend Developer",
     description: "Frontend Developer with 3+ years of experience crafting responsive, accessible web applications.",
-    creator: "@jyoti_ogennavar", // Replace with your actual Twitter handle
-    images: ["/og-image.jpg"],
+    creator: "@JOgennavar", // Replace with your actual Twitter handle
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,
@@ -80,9 +81,6 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
       "max-snippet": -1,
     },
-  },
-  verification: {
-    google: "your-google-verification-code", // Add your Google Search Console verification code
   },
 }
 
@@ -99,7 +97,11 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
       </head>
-      <body className={`${bricolage.variable} ${caveat.variable} antialiased`}>{children}</body>
+      <body className={`${bricolage.variable} ${caveat.variable} antialiased`}>
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   )
 }

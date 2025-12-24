@@ -2,14 +2,12 @@
 
 import Image from "next/image";
 import { motion, easeOut } from "framer-motion";
-// import { Navbar } from "@/components/navbar";
 import TechStack from "@/components/techstack";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Mail, File, Telescope, Sprout, Sparkle, Puzzle } from "lucide-react";
-import Footer from "@/components/footer";
 import Link from "next/link";
-import { ThemeToggle } from "@/components/theme-toggle";
+// import { ThemeToggle } from "@/components/theme-toggle";
 
 // Animation variants
 const containerVariants = {
@@ -53,20 +51,13 @@ export default function Home() {
 
   return (
     <motion.div
-      className="max-w-[700px] mx-auto p-4 bg-background text-foreground"
+      className="bg-background text-foreground"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
     >
-      {/* Theme Toggle */}
-      <div className="flex justify-end mb-4">
-        <ThemeToggle />
-      </div>
-
-      {/* <Navbar /> */}
-
       {/* Hero Section */}
-      <motion.main className="mt-20 mb-8" variants={itemVariants}>
+      <motion.main className="mt-8 mb-8" variants={itemVariants}>
         <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-center md:items-center">
           <div className="flex-shrink-0">
             <div className="relative">
@@ -76,6 +67,7 @@ export default function Home() {
                 width={150}
                 height={150}
                 className="rounded-xl"
+                priority
               />
             </div>
           </div>
@@ -227,6 +219,16 @@ export default function Home() {
             Road to Next JS by Robin Wieruch
           </p>
         </Link>
+        <Link
+          href="https://animations.dev/"
+          target="_blank"
+          title="Whimsical Animations by Josh Comeau"
+          className="hover:underline block mt-2"
+        >
+          <p className="text-stone-600 dark:text-stone-400 mt-2">
+            Whimsical Animations by Josh Comeau
+          </p>
+        </Link>
       </motion.section>
 
       {/* Tech Stack */}
@@ -258,8 +260,6 @@ export default function Home() {
           </div>
         </div>
       </motion.section>
-
-      <Footer />
     </motion.div>
   );
 }

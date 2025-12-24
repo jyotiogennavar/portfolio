@@ -3,6 +3,8 @@ import type { Metadata } from "next"
 import { Bricolage_Grotesque, Caveat } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
+import { Navbar } from "@/components/navbar"
+import Footer from "@/components/footer"
 
 const bricolage = Bricolage_Grotesque({
   variable: "--font-bricolage",
@@ -89,8 +91,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const containerClasses = "max-w-[700px] mx-auto px-4"
+
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
@@ -99,7 +103,23 @@ export default function RootLayout({
       </head>
       <body className={`${bricolage.variable} ${caveat.variable} antialiased`}>
         <ThemeProvider>
-          {children}
+          <div className="flex min-h-screen flex-col">
+            <header className="w-full">
+              <div className={containerClasses}>
+                <Navbar />
+              </div>
+            </header>
+
+            <main className="w-full flex-1">
+              <div className={containerClasses}>{children}</div>
+            </main>
+
+            <footer className="w-full mt-auto">
+              <div className={containerClasses}>
+                <Footer />
+              </div>
+            </footer>
+          </div>
         </ThemeProvider>
       </body>
     </html>

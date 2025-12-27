@@ -9,9 +9,6 @@ export default {
   ],
   theme: {
   	extend: {
-			fontFamily: {
-        caveat: ["Caveat", "cursive"],
-      },
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',

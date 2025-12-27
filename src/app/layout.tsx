@@ -1,6 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Bricolage_Grotesque, Caveat } from "next/font/google"
+import { Bricolage_Grotesque } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Navbar } from "@/components/navbar"
@@ -8,12 +8,6 @@ import Footer from "@/components/footer"
 
 const bricolage = Bricolage_Grotesque({
   variable: "--font-bricolage",
-  subsets: ["latin"],
-  display: "swap",
-})
-
-const caveat = Caveat({
-  variable: "--font-caveat",
   subsets: ["latin"],
   display: "swap",
 })
@@ -101,7 +95,7 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
       </head>
-      <body className={`${bricolage.variable} ${caveat.variable} antialiased`}>
+      <body className={`${bricolage.variable} antialiased`}>
         <ThemeProvider>
           <div className="flex min-h-screen flex-col">
             <header className="w-full">

@@ -5,7 +5,17 @@ import { motion, easeOut } from "framer-motion";
 import TechStack from "@/components/techstack";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Mail, File, Telescope, Sprout, Sparkle, Puzzle } from "lucide-react";
+import {
+  Mail,
+  File,
+  Telescope,
+  Sprout,
+  Sparkle,
+  Puzzle,
+  Github,
+  ExternalLink,
+  ArrowRight,
+} from "lucide-react";
 import Link from "next/link";
 // import { ThemeToggle } from "@/components/theme-toggle";
 
@@ -86,18 +96,19 @@ export default function Home() {
       <motion.section className="mt-8 mb-8" variants={itemVariants}>
         <div className="mt-4 space-y-4">
           <p className="text-stone-700 dark:text-stone-300 leading-relaxed">
-            Hi, as a Web Developer with 3+ years of experience,
-            I&apos;m passionate about crafting effective solutions that benefit
-            both users and businesses. When I&apos;m not coding, you&apos;ll
-            find me exploring new technologies, consuming copious amounts of
-            coffee, or trying to share my knowledge through technical writing.
+            Hi, as a Web Developer with 3+ years of experience, I&apos;m
+            passionate about crafting effective solutions that benefit both
+            users and businesses. When I&apos;m not coding, you&apos;ll find me
+            exploring new technologies, consuming copious amounts of coffee, or
+            trying to share my knowledge through technical writing.
           </p>
         </div>
       </motion.section>
       {/* Skills Section - Improved responsiveness */}
       <motion.section className="mt-10" variants={itemVariants}>
         <h2 className="text-sm text-stone-500 dark:text-stone-400 uppercase tracking-wide font-medium flex items-center gap-2">
-          <Sparkle size={16} className="text-stone-500 dark:text-stone-400" /> Things I Am Really Good At
+          <Sparkle size={16} className="text-stone-500 dark:text-stone-400" />{" "}
+          Things I Am Really Good At
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-2 mt-6">
           <Card className="leading-relaxed p-4 rounded-sm">
@@ -134,22 +145,61 @@ export default function Home() {
           <Puzzle size={16} className="text-stone-500 dark:text-stone-400" />
           Projects
         </h2>
-        <motion.div
-          className="mt-6 p-6 border-2 border-dashed border-stone-200 dark:border-stone-700 rounded-lg text-center"
-          whileHover={{ borderColor: "#3b82f6" }}
-          transition={{ duration: 0.2 }}
-        >
-          <p className="text-stone-600 dark:text-stone-400">
-            🚀 Working on something exciting! Coming soon.
-          </p>
-        </motion.div>
-        {/* <Projects /> */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+          <Card className="p-4 rounded-sm flex flex-col h-full">
+            {/* <div className="w-full h-48 bg-stone-200 dark:bg-stone-700"></div> */}
+            <div className="flex-1">
+              <CardTitle className="text-lg mb-3">Travel Blog Site</CardTitle>
+              <CardDescription className="text-stone-600 dark:text-stone-400 mb-4">
+                A content-driven travel blog built with Next.js and Sanity CMS,
+                designed for fast performance, clean UI, and easy content
+                management with structured schemas and real-time previews.
+              </CardDescription>
+            </div>
+            <div className="flex gap-2 mt-auto">
+              <Link href="https://github.com/jyotiogennavar/world-wide-wonder" target="_blank" rel="noopener noreferrer">
+                <Button variant="outline" size="sm" className="gap-2 cursor-pointer hover:opacity-80 hover:bg-stone-100 dark:hover:bg-stone-800 transition-opacity">
+                  <Github className="w-4 h-4" />
+                  GitHub
+                </Button>
+              </Link>
+              <Button variant="outline" size="sm" disabled className="gap-2 cursor-pointer hover:opacity-80 hover:bg-stone-100 dark:hover:bg-stone-800 transition-opacity">
+                <ExternalLink className="w-4 h-4" />
+                Coming Soon
+              </Button>
+            </div>
+          </Card>
+          <Card className="p-4 rounded-sm flex flex-col h-full">
+            {/* <div className="w-full h-48 bg-stone-200 dark:bg-stone-700"></div> */}
+            <div className="flex-1">
+              <CardTitle className="text-lg mb-3">
+                Financial Dashboard
+              </CardTitle>
+              <CardDescription className="text-stone-600 dark:text-stone-400 mb-4">
+                An interactive financial dashboard that visualizes key metrics
+                and trends using real-time data handling, reusable UI
+                components, and clear data-driven layouts.
+              </CardDescription>
+            </div>
+            <div className="flex gap-2 mt-auto">
+              <Button variant="outline" size="sm" disabled className="gap-2 cursor-pointer hover:opacity-80 hover:bg-stone-100 dark:hover:bg-stone-800 transition-opacity">
+                <Github className="w-4 h-4" />
+                GitHub
+              </Button>
+              <Button variant="outline" size="sm" disabled className="gap-2 cursor-pointer hover:opacity-80 hover:bg-stone-100 dark:hover:bg-stone-800 transition-opacity">
+                <ExternalLink className="w-4 h-4" />
+                Coming Soon
+              </Button>
+            </div>
+          </Card>
+        </div>
       </motion.section>
 
-      {/* Writings Section - Added content */}
+      {/* Blogs Section - Added content */}
       <motion.section className="mt-10" variants={itemVariants}>
         <h2 className="text-sm text-stone-500 dark:text-stone-400 uppercase tracking-wide font-medium flex items-center gap-2">
-          <Sprout size={16} className="text-stone-500 dark:text-stone-400" /> Writings
+          <Sprout size={16} className="text-stone-500 dark:text-stone-400" />{" "}
+          Blogs
         </h2>
 
         <div className="mt-6 space-y-6">
@@ -188,16 +238,21 @@ export default function Home() {
             </article>
           </Link>
 
-          <p className="text-stone-600 dark:text-stone-400">
-            More articles coming soon! Stay tuned.
-          </p>
+          <Link
+            href="/blog"
+            className="mt-2 hover:underline flex items-center gap-2"
+          >
+            For more articles, visit my blog
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
       </motion.section>
 
       {/* Currently Learning Section - New */}
       <motion.section className="mt-10" variants={itemVariants}>
         <h2 className="text-sm text-stone-500 dark:text-stone-400 uppercase tracking-wide font-medium flex items-center gap-2">
-          <Telescope size={16} className="text-stone-500 dark:text-stone-400" /> Currently learning
+          <Telescope size={16} className="text-stone-500 dark:text-stone-400" />{" "}
+          Currently learning
         </h2>
         <Link
           href="https://animations.dev/"

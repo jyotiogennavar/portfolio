@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getAllPosts } from "@/lib/mdx";
 import { Metadata } from "next";
+import { ExternalLink } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Blog - Web Development Insights and Tutorials",
@@ -54,7 +55,7 @@ export default function BlogPage() {
     <div className="bg-background text-foreground">
       <div className="mt-2 mb-8">
         <h1 className="text-4xl font-bold mb-4">Blog</h1>
-        <p className="text-base text-muted-foreground mb-6">
+        <p className="text-base text-stone-600 dark:text-stone-400 mb-6">
           Welcome to my blog! Here, I share my thoughts on web development,
           design, and technology.
         </p>
@@ -71,17 +72,54 @@ export default function BlogPage() {
                 {post.title}
               </h2>
             </Link>
-            <p className="text-gray-700 dark:text-gray-300 mb-4">
+            <p className="text-stone-600 dark:text-stone-400 mb-4">
               {post.excerpt}
             </p>
             <time
-              className="text-sm text-muted-foreground block"
+              className="text-sm text-stone-500 dark:text-stone-400 block"
               dateTime={post.date}
             >
               {post.formattedDate}
             </time>
           </article>
         ))}
+        
+        {/* External Medium Articles */}
+        <article className="border border-border rounded-lg p-6 bg-card transition-colors">
+          <Link
+            href="https://medium.com/design-bootcamp/boosting-website-visibility-a-complete-guide-to-on-page-seo-for-web-developers-7da71d5f95d2"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-start gap-2 group"
+          >
+            <h2 className="text-xl font-semibold mb-2 hover:underline decoration-pink-500 decoration-wavy transition-colors flex-1">
+              Boosting Website Visibility: A Complete Guide to On-Page SEO for Web Developers
+            </h2>
+            <ExternalLink className="w-5 h-5 text-muted-foreground group-hover:text-foreground transition-colors flex-shrink-0 mt-1" />
+          </Link>
+          <p className="text-stone-600 dark:text-stone-400 mb-4">
+            Learn how to optimize your website&apos;s on-page SEO to improve visibility and ranking on search engines.
+          </p>
+          <span className="text-sm text-stone-500 dark:text-stone-400 block">Medium</span>
+        </article>
+
+        <article className="border border-border rounded-lg p-6 bg-card transition-colors">
+          <Link
+            href="https://medium.com/design-bootcamp/website-sitemaps-101-your-websites-guide-to-success-3bf7c04129ce"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-start gap-2 group"
+          >
+            <h2 className="text-xl font-semibold mb-2 hover:underline decoration-pink-500 decoration-wavy transition-colors flex-1">
+              Website Sitemaps 101: your website&apos;s guide to success
+            </h2>
+            <ExternalLink className="w-5 h-5 text-muted-foreground group-hover:text-foreground transition-colors flex-shrink-0 mt-1" />
+          </Link>
+          <p className="text-stone-600 dark:text-stone-400 mb-4">
+            Discover the importance of sitemaps for SEO and user experience, and learn how to create and submit them effectively.
+          </p>
+          <span className="text-sm text-stone-500 dark:text-stone-400 block">Medium</span>
+        </article>
       </div>
     </div>
   );

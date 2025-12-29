@@ -61,8 +61,8 @@ const Footer = () => {
         </div>
 
         <div className="flex flex-wrap items-center justify-between gap-4 max-[26.5625rem]:flex-col max-[26.5625rem]:items-center max-[26.5625rem]:justify-center max-[26.5625rem]:px-4">
-          <div className="flex items-center gap-3 text-sm text-stone-500 max-[26.5625rem]:justify-center">
-            <span>© 2025 Jyoti Ogennavar</span>
+          <div className="flex items-center gap-3 text-sm text-stone-300 max-[26.5625rem]:justify-center">
+            <p>© 2025 Jyoti Ogennavar</p>
           </div>
 
           <div className="flex items-center gap-3 max-[26.5625rem]:justify-center">

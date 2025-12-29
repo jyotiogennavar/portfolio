@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, easeOut } from "framer-motion";
 import TechStack from "@/components/techstack";
@@ -15,6 +16,7 @@ import {
   Github,
   ExternalLink,
   ArrowRight,
+  ChevronUp,
 } from "lucide-react";
 import Link from "next/link";
 // import { ThemeToggle } from "@/components/theme-toggle";
@@ -44,6 +46,18 @@ const itemVariants = {
 };
 
 export default function Home() {
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Show button when user scrolls down more than 300px
+      setShowScrollTop(window.scrollY > 300);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const handleContactClick = () => {
     window.location.href =
       "mailto:hey@jyotiogennavar.com?subject=Project Inquiry&body=Hi Jyoti, I'd like to discuss a project opportunity with you.";
@@ -57,6 +71,13 @@ export default function Home() {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
 
   return (
@@ -315,6 +336,20 @@ export default function Home() {
           </div>
         </div>
       </motion.section>
+
+      {/* Scroll to Top Button */}
+      {showScrollTop && (
+        <motion.button
+          onClick={scrollToTop}
+          className="fixed bottom-6 right-6 w-10 h-10 rounded-full bg-stone-200 dark:bg-stone-800 hover:bg-stone-300 dark:hover:bg-stone-600 flex items-center justify-center shadow-lg transition-all duration-200 hover:scale-110 z-50"
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0 }}
+          aria-label="Scroll to top"
+        >
+          <ChevronUp className="w-6 h-6 text-stone-700 dark:text-stone-100" />
+        </motion.button>
+      )}
     </motion.div>
   );
 }

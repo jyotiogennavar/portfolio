@@ -4,8 +4,7 @@ import Link from "next/link"
 
 export const Navbar = () => {
   const navItems = [
-    // { name: "Home", href: "/" },
-    // { name: "About me", href: "/about-me" },
+    { name: "About me", href: "/about-me" },
     // { name: "Projects", href: "/projects" },
     { name: "Blogs", href: "/blog" },
     // { name: "Lab", href: "/lab" },
@@ -16,7 +15,7 @@ export const Navbar = () => {
     <nav className="flex items-center justify-between px-6 py-6">
       <Link
         href="/"
-        className="text-sm font-semibold text-stone-800 transition-colors hover:text-stone-600 dark:text-stone-100 dark:hover:text-stone-300"
+        className="text-base font-semibold text-stone-800 transition-colors hover:text-stone-600 dark:text-stone-100 dark:hover:text-stone-300"
       >
         JO
       </Link>

@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { useState, useEffect } from "react"
-import { motion, useScroll, useSpring } from "framer-motion"
+import { motion, useReducedMotion, useScroll, useSpring } from "framer-motion"
 import { Calendar, Clock, Heart, BookOpen } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
@@ -32,6 +32,7 @@ import {
   Code,
   Img,
 } from "@/components/mdx-components"
+import { RoseDemo } from "@/components/RoseDemo"
 import type { BlogPost } from "@/lib/mdx"
 
 type TableOfContentsItem = {
@@ -60,6 +61,7 @@ const mdxComponents = {
   MoreAbout,
   ResourceGrid,
   ResourceCard,
+  RoseDemo,
 }
 
 interface BlogPostClientProps {
@@ -73,6 +75,7 @@ export function BlogPostClient({ frontmatter, content, tableOfContents }: BlogPo
   const [likes, setLikes] = useState(42)
   const [isLiked, setIsLiked] = useState(false)
   const [mdxContent, setMdxContent] = useState<React.ReactElement | null>(null)
+  const reduceMotion = useReducedMotion()
 
   const { scrollYProgress } = useScroll()
   const scaleX = useSpring(scrollYProgress, {
@@ -134,7 +137,7 @@ export function BlogPostClient({ frontmatter, content, tableOfContents }: BlogPo
         <div className="max-w-5xl mx-auto">
           {/* Header */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={reduceMotion ? false : { opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="mb-8"
@@ -142,7 +145,7 @@ export function BlogPostClient({ frontmatter, content, tableOfContents }: BlogPo
             <Badge variant="secondary" className="mb-4">
               {frontmatter.category}
             </Badge>
-            <h1 className="text-4xl font-bold tracking-tight mb-4">{frontmatter.title}</h1>
+            <h1 className="mb-4 text-4xl font-bold tracking-tight">{frontmatter.title}</h1>
             <div className="flex items-center gap-6 text-muted-foreground mb-6">
               <div className="flex items-center gap-2">
                 <Calendar className="h-4 w-4" />
@@ -166,13 +169,13 @@ export function BlogPostClient({ frontmatter, content, tableOfContents }: BlogPo
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
             {/* Main Content */}
             <div className="lg:col-span-3">
-              <article className="prose prose-gray dark:prose-invert max-w-[700px]">
+              <article className="prose prose-gray max-w-[65ch] dark:prose-invert">
                 {mdxContent}
 
                 {/* Feedback Section */}
                 <motion.section
                   id="feedback"
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={reduceMotion ? false : { opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6 }}
                   viewport={{ once: true }}
@@ -191,7 +194,7 @@ export function BlogPostClient({ frontmatter, content, tableOfContents }: BlogPo
                         className="flex items-center gap-2"
                       >
                         <Heart className={cn("h-4 w-4", isLiked && "fill-current")} />
-                        {likes} Likes
+                        <span className="tabular-nums">{likes}</span> likes
                       </Button>
                     </div>
                   </Card>
@@ -213,11 +216,11 @@ export function BlogPostClient({ frontmatter, content, tableOfContents }: BlogPo
                         key={id}
                         onClick={() => scrollToSection(id)}
                         className={cn(
-                          "block w-full text-left text-sm py-1 px-2 rounded transition-colors",
-                          level === 3 && "ml-4",
+                          "block w-full rounded px-2 py-2 text-left text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+                          level === 3 && "ms-4",
                           activeSection === id
-                            ? "bg-primary/10 text-primary font-medium"
-                            : "text-muted-foreground hover:text-foreground hover:bg-muted",
+                            ? "bg-primary/10 font-medium text-primary"
+                            : "text-muted-foreground hoverable:hover:bg-muted hoverable:hover:text-foreground",
                         )}
                       >
                         {title}

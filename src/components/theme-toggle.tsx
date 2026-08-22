@@ -7,63 +7,47 @@ import { Moon, Sun } from "lucide-react"
 export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
-  const [hasInteracted, setHasInteracted] = useState(false)
 
   useEffect(() => {
     setMounted(true)
   }, [])
 
   const toggleTheme = () => {
-    setHasInteracted(true)
     setTheme(resolvedTheme === "light" ? "dark" : "light")
   }
 
   const isDark = resolvedTheme === "dark"
 
   if (!mounted) {
-    return (
-      <button
-        type="button"
-        aria-hidden="true"
-        tabIndex={-1}
-        className="relative px-2 py-2 rounded-md text-sm opacity-0 pointer-events-none"
-        suppressHydrationWarning
-      >
-        <span className="sr-only">Toggle theme</span>
-      </button>
-    )
+    return <span className="inline-flex h-10 w-10" aria-hidden="true" />
   }
 
   return (
     <button
       type="button"
       onClick={toggleTheme}
-      className="relative px-2 py-2 rounded-md text-sm text-stone-900 dark:text-stone-100 hover:bg-stone-50 dark:hover:bg-stone-700 transition-colors active:scale-90"
+      className="relative inline-flex h-10 w-10 items-center justify-center rounded-md text-sm text-stone-900 will-change-transform transition-[transform,background-color] duration-200 ease-out active:scale-[0.97] hoverable:hover:bg-stone-50 dark:text-stone-100 dark:hoverable:hover:bg-stone-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
       aria-pressed={isDark}
       aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
     >
-      <div className="relative w-4 h-4">
+      <span className="relative h-4 w-4">
         <Sun
           aria-hidden="true"
-          className={`h-4 w-4 absolute inset-0 transition-all duration-500 ${
+          className={`absolute inset-0 h-4 w-4 transition-[transform,opacity,filter] duration-200 ease-out ${
             isDark
-              ? "scale-0 opacity-0 rotate-180"
-              : `scale-100 opacity-100 rotate-0 ${
-                  hasInteracted ? "animate-in spin-in-180 zoom-in-50 duration-500" : ""
-                }`
+              ? "scale-[0.25] opacity-0 blur-[4px]"
+              : "scale-100 opacity-100 blur-0"
           }`}
         />
         <Moon
           aria-hidden="true"
-          className={`h-4 w-4 absolute inset-0 transition-all duration-500 ${
+          className={`absolute inset-0 h-4 w-4 transition-[transform,opacity,filter] duration-200 ease-out ${
             isDark
-              ? `scale-100 opacity-100 rotate-0 ${
-                  hasInteracted ? "animate-in spin-in-180 zoom-in-50 duration-500" : ""
-                }`
-              : "scale-0 opacity-0 -rotate-180"
+              ? "scale-100 opacity-100 blur-0"
+              : "scale-[0.25] opacity-0 blur-[4px]"
           }`}
         />
-      </div>
+      </span>
     </button>
   )
 }

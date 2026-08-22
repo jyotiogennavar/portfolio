@@ -95,8 +95,14 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
       </head>
-      <body className={`${bricolage.variable} antialiased`}>
+      <body className={bricolage.variable}>
         <ThemeProvider>
+          <a
+            href="#content"
+            className="fixed start-4 top-4 z-[100] -translate-y-16 rounded-md bg-background px-3 py-2 text-sm font-medium text-foreground shadow-sm ring-2 ring-ring transition-transform duration-200 ease-out focus:translate-y-0 focus-visible:translate-y-0"
+          >
+            Skip to content
+          </a>
           <div className="flex min-h-screen flex-col">
             <header className="w-full">
               <div className={containerClasses}>
@@ -104,7 +110,7 @@ export default function RootLayout({
               </div>
             </header>
 
-            <main className="w-full flex-1">
+            <main id="content" tabIndex={-1} className="w-full flex-1 outline-none">
               <div className={containerClasses}>{children}</div>
             </main>
 

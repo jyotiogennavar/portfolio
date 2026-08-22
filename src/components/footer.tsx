@@ -49,7 +49,7 @@ const Footer = () => {
               key={name}
               variant="ghost"
               size="sm"
-              className="gap-2 rounded-full border border-transparent text-stone-500 hover:border-stone-200 hover:bg-stone-50 hover:text-stone-700 dark:text-stone-300 dark:hover:border-stone-700 dark:hover:bg-stone-900 dark:hover:text-stone-50"
+              className="gap-2 rounded-full border border-transparent text-stone-500 hoverable:hover:border-stone-200 hoverable:hover:bg-stone-50 hoverable:hover:text-stone-700 dark:text-stone-300 dark:hoverable:hover:border-stone-700 dark:hoverable:hover:bg-stone-900 dark:hoverable:hover:text-stone-50"
               asChild
             >
               <Link href={href} target="_blank" rel="noopener noreferrer">
@@ -62,7 +62,7 @@ const Footer = () => {
 
         <div className="flex flex-wrap items-center justify-between gap-4 max-[26.5625rem]:flex-col max-[26.5625rem]:items-center max-[26.5625rem]:justify-center max-[26.5625rem]:px-4">
           <div className="flex items-center gap-3 text-sm text-stone-300 max-[26.5625rem]:justify-center">
-            <p>© 2025 Jyoti Ogennavar</p>
+            <p>© {new Date().getFullYear()} Jyoti Ogennavar</p>
           </div>
 
           <div className="flex items-center gap-3 max-[26.5625rem]:justify-center">

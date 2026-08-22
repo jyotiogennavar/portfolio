@@ -54,8 +54,8 @@ export default function BlogPage() {
   return (
     <div className="bg-background text-foreground">
       <div className="mt-2 mb-8">
-        <h1 className="text-4xl font-bold mb-4">Blog</h1>
-        <p className="text-base text-stone-600 dark:text-stone-400 mb-6">
+        <h1 className="mb-4 text-4xl font-bold">Blog</h1>
+        <p className="mb-6 max-w-[65ch] text-pretty text-base text-stone-600 dark:text-stone-400">
           Welcome to my blog! Here, I share my thoughts on web development,
           design, and technology.
         </p>
@@ -65,14 +65,14 @@ export default function BlogPage() {
         {posts.map((post) => (
           <article
             key={post.slug}
-            className="border border-border rounded-lg p-6 bg-card transition-colors"
+            className="rounded-xl border border-border bg-card p-6"
           >
             <Link href={`/blog/${post.slug}`}>
-              <h2 className="text-xl font-semibold mb-2 hover:underline decoration-pink-500 decoration-wavy transition-colors">
+              <h2 className="mb-2 text-xl font-semibold underline-offset-4 hoverable:hover:underline hoverable:hover:decoration-pink-500 hoverable:hover:decoration-wavy">
                 {post.title}
               </h2>
             </Link>
-            <p className="text-stone-600 dark:text-stone-400 mb-4">
+            <p className="mb-4 text-pretty text-stone-600 dark:text-stone-400">
               {post.excerpt}
             </p>
             <time
@@ -85,37 +85,37 @@ export default function BlogPage() {
         ))}
         
         {/* External Medium Articles */}
-        <article className="border border-border rounded-lg p-6 bg-card transition-colors">
+        <article className="rounded-xl border border-border bg-card p-6">
           <Link
             href="https://medium.com/design-bootcamp/boosting-website-visibility-a-complete-guide-to-on-page-seo-for-web-developers-7da71d5f95d2"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-start gap-2 group"
+            className="group flex items-start gap-2"
           >
-            <h2 className="text-xl font-semibold mb-2 hover:underline decoration-pink-500 decoration-wavy transition-colors flex-1">
+            <h2 className="mb-2 flex-1 text-xl font-semibold underline-offset-4 hoverable:hover:underline hoverable:hover:decoration-pink-500 hoverable:hover:decoration-wavy">
               Boosting Website Visibility: A Complete Guide to On-Page SEO for Web Developers
             </h2>
-            <ExternalLink className="w-5 h-5 text-muted-foreground group-hover:text-foreground transition-colors flex-shrink-0 mt-1" />
+            <ExternalLink className="mt-1 h-5 w-5 shrink-0 text-muted-foreground" />
           </Link>
-          <p className="text-stone-600 dark:text-stone-400 mb-4">
+          <p className="mb-4 text-pretty text-stone-600 dark:text-stone-400">
             Learn how to optimize your website&apos;s on-page SEO to improve visibility and ranking on search engines.
           </p>
           <span className="text-sm text-stone-500 dark:text-stone-400 block">Medium</span>
         </article>
 
-        <article className="border border-border rounded-lg p-6 bg-card transition-colors">
+        <article className="rounded-xl border border-border bg-card p-6">
           <Link
             href="https://medium.com/design-bootcamp/website-sitemaps-101-your-websites-guide-to-success-3bf7c04129ce"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-start gap-2 group"
+            className="group flex items-start gap-2"
           >
-            <h2 className="text-xl font-semibold mb-2 hover:underline decoration-pink-500 decoration-wavy transition-colors flex-1">
+            <h2 className="mb-2 flex-1 text-xl font-semibold underline-offset-4 hoverable:hover:underline hoverable:hover:decoration-pink-500 hoverable:hover:decoration-wavy">
               Website Sitemaps 101: your website&apos;s guide to success
             </h2>
-            <ExternalLink className="w-5 h-5 text-muted-foreground group-hover:text-foreground transition-colors flex-shrink-0 mt-1" />
+            <ExternalLink className="mt-1 h-5 w-5 shrink-0 text-muted-foreground" />
           </Link>
-          <p className="text-stone-600 dark:text-stone-400 mb-4">
+          <p className="mb-4 text-pretty text-stone-600 dark:text-stone-400">
             Discover the importance of sitemaps for SEO and user experience, and learn how to create and submit them effectively.
           </p>
           <span className="text-sm text-stone-500 dark:text-stone-400 block">Medium</span>

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { motion, easeOut } from "framer-motion";
+import { motion, easeOut, useReducedMotion } from "framer-motion";
 import TechStack from "@/components/techstack";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -14,7 +14,6 @@ import {
   Sparkle,
   Puzzle,
   Github,
-  ExternalLink,
   ArrowRight,
   ChevronUp,
 } from "lucide-react";
@@ -47,6 +46,7 @@ const itemVariants = {
 
 export default function Home() {
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const reduceMotion = useReducedMotion();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -84,7 +84,7 @@ export default function Home() {
     <motion.div
       className="bg-background text-foreground"
       variants={containerVariants}
-      initial="hidden"
+      initial={reduceMotion ? false : "hidden"}
       animate="visible"
     >
       {/* Hero Section */}
@@ -116,7 +116,7 @@ export default function Home() {
       {/* About Section*/}
       <motion.section className="mt-8 mb-8" variants={itemVariants}>
         <div className="mt-4 space-y-4">
-          <p className="text-stone-700 dark:text-stone-300 leading-relaxed">
+          <p className="max-w-[65ch] leading-relaxed text-stone-700 dark:text-stone-300">
             Hi, as a Web Developer with 3+ years of experience, I&apos;m
             passionate about crafting effective solutions that benefit both
             users and businesses. When I&apos;m not coding, you&apos;ll find me
@@ -128,32 +128,32 @@ export default function Home() {
       {/* Skills Section - Improved responsiveness */}
       <motion.section className="mt-10" variants={itemVariants}>
         <h2 className="text-sm text-stone-500 dark:text-stone-400 uppercase tracking-wide font-medium flex items-center gap-2">
-          <Sparkle size={16} className="text-stone-500 dark:text-stone-400" />{" "}
+          <Sparkle size={16} className="pointer-events-none text-stone-500 dark:text-stone-400" />{" "}
           Things I Am Really Good At
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-2 mt-6">
-          <Card className="leading-relaxed p-4 rounded-sm">
+        <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-2">
+          <Card className="rounded-xl p-4 leading-relaxed">
             <CardTitle className="text-lg">
               Responsive & Accessible Design
             </CardTitle>
-            <CardDescription className="mt-3 text-stone-600 dark:text-stone-400">
+            <CardDescription className="mt-3 text-pretty text-stone-600 dark:text-stone-400">
               Crafting intuitive user interfaces that adapt across all devices
               while prioritizing accessibility.
             </CardDescription>
           </Card>
-          <Card className="leading-relaxed p-4 rounded-sm">
+          <Card className="rounded-xl p-4 leading-relaxed">
             <CardTitle className="text-lg">
               Pixel-Perfect Implementation
             </CardTitle>
-            <CardDescription className="mt-3 text-stone-600 dark:text-stone-400">
+            <CardDescription className="mt-3 text-pretty text-stone-600 dark:text-stone-400">
               Bringing designs to life with precision and attention to detail
             </CardDescription>
           </Card>
-          <Card className="leading-relaxed p-4 rounded-sm">
+          <Card className="rounded-xl p-4 leading-relaxed">
             <CardTitle className="text-lg">
               Performance & UX Optimization
             </CardTitle>
-            <CardDescription className="mt-3 text-stone-600 dark:text-stone-400">
+            <CardDescription className="mt-3 text-pretty text-stone-600 dark:text-stone-400">
               Optimizing for accessibility, speed, and exceptional user
               experience
             </CardDescription>
@@ -163,55 +163,45 @@ export default function Home() {
       {/* Projects */}
       <motion.section className="mt-10" variants={itemVariants}>
         <h2 className="text-sm text-stone-500 dark:text-stone-400 uppercase tracking-wide font-medium flex items-center gap-2">
-          <Puzzle size={16} className="text-stone-500 dark:text-stone-400" />
+          <Puzzle size={16} className="pointer-events-none text-stone-500 dark:text-stone-400" />
           Projects
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-          <Card className="p-4 rounded-sm flex flex-col h-full">
-            {/* <div className="w-full h-48 bg-stone-200 dark:bg-stone-700"></div> */}
+        <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
+          <Card className="flex h-full flex-col rounded-xl p-4">
             <div className="flex-1">
-              <CardTitle className="text-lg mb-3">Travel Blog Site</CardTitle>
-              <CardDescription className="text-stone-600 dark:text-stone-400 mb-4">
+              <CardTitle className="mb-3 text-lg">Travel Blog Site</CardTitle>
+              <CardDescription className="mb-4 text-pretty text-stone-600 dark:text-stone-400">
                 A content-driven travel blog built with Next.js and Sanity CMS,
                 designed for fast performance, clean UI, and easy content
                 management with structured schemas and real-time previews.
               </CardDescription>
             </div>
-            <div className="flex gap-2 mt-auto">
-              <Link href="https://github.com/jyotiogennavar/world-wide-wonder" target="_blank" rel="noopener noreferrer">
-                <Button variant="outline" size="sm" className="gap-2 cursor-pointer hover:opacity-80 hover:bg-stone-100 dark:hover:bg-stone-800 transition-opacity">
-                  <Github className="w-4 h-4" />
-                  GitHub
-                </Button>
-              </Link>
-              <Button variant="outline" size="sm" disabled className="gap-2 cursor-pointer hover:opacity-80 hover:bg-stone-100 dark:hover:bg-stone-800 transition-opacity">
-                <ExternalLink className="w-4 h-4" />
-                Coming Soon
+            <div className="mt-auto flex flex-wrap items-center gap-2">
+              <Button variant="outline" size="sm" className="gap-2" asChild>
+                <Link href="https://github.com/jyotiogennavar/world-wide-wonder" target="_blank" rel="noopener noreferrer">
+                  <Github className="h-4 w-4" />
+                  View on GitHub
+                </Link>
               </Button>
+              <p className="text-sm text-stone-500 dark:text-stone-400">
+                Live site coming soon
+              </p>
             </div>
           </Card>
-          <Card className="p-4 rounded-sm flex flex-col h-full">
-            {/* <div className="w-full h-48 bg-stone-200 dark:bg-stone-700"></div> */}
+          <Card className="flex h-full flex-col rounded-xl p-4">
             <div className="flex-1">
-              <CardTitle className="text-lg mb-3">
+              <CardTitle className="mb-3 text-lg">
                 Financial Dashboard
               </CardTitle>
-              <CardDescription className="text-stone-600 dark:text-stone-400 mb-4">
+              <CardDescription className="mb-4 text-pretty text-stone-600 dark:text-stone-400">
                 An interactive financial dashboard that visualizes key metrics
                 and trends using real-time data handling, reusable UI
                 components, and clear data-driven layouts.
               </CardDescription>
             </div>
-            <div className="flex gap-2 mt-auto">
-              <Button variant="outline" size="sm" disabled className="gap-2 cursor-pointer hover:opacity-80 hover:bg-stone-100 dark:hover:bg-stone-800 transition-opacity">
-                <Github className="w-4 h-4" />
-                GitHub
-              </Button>
-              <Button variant="outline" size="sm" disabled className="gap-2 cursor-pointer hover:opacity-80 hover:bg-stone-100 dark:hover:bg-stone-800 transition-opacity">
-                <ExternalLink className="w-4 h-4" />
-                Coming Soon
-              </Button>
-            </div>
+            <p className="mt-auto text-sm text-stone-500 dark:text-stone-400">
+              Links will be available when this project ships.
+            </p>
           </Card>
         </div>
       </motion.section>
@@ -219,7 +209,7 @@ export default function Home() {
       {/* Blogs Section - Added content */}
       <motion.section className="mt-10" variants={itemVariants}>
         <h2 className="text-sm text-stone-500 dark:text-stone-400 uppercase tracking-wide font-medium flex items-center gap-2">
-          <Sprout size={16} className="text-stone-500 dark:text-stone-400" />{" "}
+          <Sprout size={16} className="pointer-events-none text-stone-500 dark:text-stone-400" />{" "}
           Blogs
         </h2>
 
@@ -235,7 +225,7 @@ export default function Home() {
                 Boosting Website Visibility: A Complete Guide to On-Page SEO for
                 Web Developers
               </h3>
-              <p className="text-sm text-stone-600 dark:text-stone-400 mt-2">
+              <p className="mt-2 text-pretty text-sm text-stone-600 dark:text-stone-400">
                 Learn how to optimize your website&apos;s on-page SEO to improve
                 visibility and ranking on search engines.
               </p>
@@ -252,7 +242,7 @@ export default function Home() {
               <h3 className="font-semibold">
                 Website Sitemaps 101: your website’s guide to success
               </h3>
-              <p className="text-sm text-stone-600 dark:text-stone-400 mt-2">
+              <p className="mt-2 text-pretty text-sm text-stone-600 dark:text-stone-400">
                 Discover the importance of sitemaps for SEO and user experience,
                 and learn how to create and submit them effectively.
               </p>
@@ -263,7 +253,7 @@ export default function Home() {
             href="/blog"
             className="mt-2 hover:underline flex items-center gap-2"
           >
-            For more articles, visit my blog
+            Read more articles
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
@@ -272,7 +262,7 @@ export default function Home() {
       {/* Currently Learning Section - New */}
       <motion.section className="mt-10" variants={itemVariants}>
         <h2 className="text-sm text-stone-500 dark:text-stone-400 uppercase tracking-wide font-medium flex items-center gap-2">
-          <Telescope size={16} className="text-stone-500 dark:text-stone-400" />{" "}
+          <Telescope size={16} className="pointer-events-none text-stone-500 dark:text-stone-400" />{" "}
           Currently learning
         </h2>
         <Link
@@ -314,16 +304,16 @@ export default function Home() {
 
       {/* Contact/CTA Section - New */}
       <motion.section className="mt-10">
-        <div className="bg-gradient-to-r from-stone-200 to-stone-100 dark:from-stone-800 dark:to-stone-700 rounded-lg p-8 text-center">
-          <h2 className="text-2xl font-bold mb-4">Let&apos;s Work Together</h2>
-          <p className="text-stone-600 dark:text-stone-300 mb-6 max-w-md mx-auto">
+        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-stone-200 to-stone-100 p-8 text-center dark:from-stone-800 dark:to-stone-700">
+          <h2 className="mb-4 text-2xl font-bold">Let&apos;s work together</h2>
+          <p className="mx-auto mb-6 max-w-md text-pretty text-stone-600 dark:text-stone-300">
             I&apos;m always interested in new opportunities and exciting
             projects. Let&apos;s discuss how we can bring your ideas to life.
           </p>
-          <div className="flex gap-3 justify-center">
+          <div className="flex justify-center gap-3">
             <Button className="gap-2" onClick={handleContactClick}>
-              <Mail className="w-3 h-3" />
-              Contact Me
+              <Mail className="h-4 w-4" />
+              Send an email
             </Button>
             <Button
               variant="outline"
@@ -341,7 +331,7 @@ export default function Home() {
       {showScrollTop && (
         <motion.button
           onClick={scrollToTop}
-          className="fixed bottom-6 right-6 w-10 h-10 rounded-full bg-stone-200 dark:bg-stone-800 hover:bg-stone-300 dark:hover:bg-stone-600 flex items-center justify-center shadow-lg transition-all duration-200 hover:scale-110 z-50"
+          className="fixed bottom-6 right-6 z-50 flex h-11 w-11 items-center justify-center rounded-full bg-stone-200 shadow-lg will-change-transform transition-[transform,background-color] duration-200 ease-out hoverable:hover:scale-[1.04] hoverable:hover:bg-stone-300 dark:bg-stone-800 dark:hoverable:hover:bg-stone-600"
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0 }}

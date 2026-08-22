@@ -15,7 +15,7 @@ function generateSlug(text: string): string {
 export function H1({ children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) {
   const id = typeof children === "string" ? generateSlug(children) : undefined
   return (
-    <h1 id={id} {...props} className="text-3xl md:text-4xl font-bold tracking-tight mt-8 mb-4">
+    <h1 id={id} {...props} className="mb-4 mt-8 text-3xl font-bold tracking-tight md:text-4xl">
       {children}
     </h1>
   )
@@ -24,7 +24,7 @@ export function H1({ children, ...props }: React.HTMLAttributes<HTMLHeadingEleme
 export function H2({ children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) {
   const id = typeof children === "string" ? generateSlug(children) : undefined
   return (
-    <h2 id={id} {...props} className="text-2xl md:text-3xl font-semibold tracking-tight mt-10 mb-4">
+    <h2 id={id} {...props} className="mb-4 mt-10 text-2xl font-semibold tracking-tight md:text-3xl">
       {children}
     </h2>
   )
@@ -33,7 +33,7 @@ export function H2({ children, ...props }: React.HTMLAttributes<HTMLHeadingEleme
 export function H3({ children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) {
   const id = typeof children === "string" ? generateSlug(children) : undefined
   return (
-    <h3 id={id} {...props} className="text-xl md:text-2xl font-semibold tracking-tight mt-8 mb-3">
+    <h3 id={id} {...props} className="mb-3 mt-8 text-xl font-semibold tracking-tight md:text-2xl">
       {children}
     </h3>
   )
@@ -42,7 +42,7 @@ export function H3({ children, ...props }: React.HTMLAttributes<HTMLHeadingEleme
 export function H4({ children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) {
   const id = typeof children === "string" ? generateSlug(children) : undefined
   return (
-    <h4 id={id} {...props} className="text-lg md:text-xl font-semibold tracking-tight mt-6 mb-2">
+    <h4 id={id} {...props} className="mb-2 mt-6 text-lg font-semibold tracking-tight md:text-xl">
       {children}
     </h4>
   )
@@ -58,7 +58,7 @@ export function P({ children, ...props }: React.HTMLAttributes<HTMLParagraphElem
 
 export function A({ children, ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
   return (
-    <a {...props} className="underline decoration-dotted underline-offset-4 text-primary hover:text-primary/80">
+    <a {...props} className="break-words text-primary underline decoration-dotted underline-offset-4 hoverable:hover:text-primary/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
       {children}
     </a>
   )
@@ -170,7 +170,7 @@ export function NeedToKnow({ children }: { children: React.ReactNode }) {
     <Card className="border-amber-200 bg-amber-50 dark:border-amber-800 dark:bg-amber-950/20 my-8">
       <CardContent className="p-6">
         <div className="flex items-start gap-3">
-          <Info className="h-5 w-5 text-amber-600 dark:text-amber-400 mt-0.5 flex-shrink-0" />
+          <Info className="mt-0.5 h-5 w-5 shrink-0 pointer-events-none text-amber-600 dark:text-amber-400" />
           <div>
             <h2 className="text-xl font-semibold mb-3 text-amber-800 dark:text-amber-200">Need to Know</h2>
             <div className="space-y-3 text-amber-700 dark:text-amber-300 prose prose-sm">{children}</div>
@@ -205,9 +205,9 @@ export function ResourceCard({
   children: React.ReactNode
 }) {
   return (
-    <Card className="p-4 hover:shadow-md transition-shadow">
+    <Card className="p-4">
       <div className="flex items-start gap-3">
-        <ExternalLink className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
+        <ExternalLink className="mt-1 h-5 w-5 shrink-0 pointer-events-none text-primary" />
         <div>
           <h3 className="font-semibold mb-1">{title}</h3>
           <p className="text-sm text-muted-foreground mb-2">{description}</p>

@@ -59,5 +59,14 @@ export default {
   	}
   },
   // eslint-disable-next-line @typescript-eslint/no-require-imports
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    function hoverableVariant({
+      addVariant,
+    }: {
+      addVariant: (name: string, definition: string) => void
+    }) {
+      addVariant("hoverable", "@media (hover: hover)")
+    },
+  ],
 } satisfies Config;

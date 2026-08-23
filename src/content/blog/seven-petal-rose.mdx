@@ -1,0 +1,275 @@
+---
+title: "Drawing a Seven-Petal Rose with Pure CSS Trigonometry"
+description: "CSS finally has sin() and cos(). Here's how to use them to place a parametric rose on screen — no canvas, no JavaScript math — and wire it to live sliders."
+date: "2026-06-15"
+tags: ["css", "trigonometry", "interactive", "motion"]
+---
+
+For years, anything involving angles in the browser meant reaching for canvas or
+a pile of `transform: rotate()` hacks. That changed quietly: `sin()` and `cos()`
+are now real CSS functions, shipping in every major engine. You can place an
+element at an arbitrary point on a circle using nothing but a custom property and
+a `calc()`.
+
+This post builds one specific thing with that power — a **seven-petal rose**, the
+parametric curve `r = cos(kθ)` — and then wires it to sliders so you can watch the
+petals bloom and split as you drag. Everything that positions a dot is pure CSS.
+
+<RoseDemo />
+
+## The one idea behind all of it
+
+A point on a circle of radius `R`, at angle `θ` measured from the center, sits at:
+
+```
+x = R · cos(θ)
+y = R · sin(θ)
+```
+
+That's the whole foundation. `cos()` gives you the horizontal offset, `sin()`
+gives you the vertical one. Sweep `θ` from `0` to `360deg` and you've walked the
+full circle. Until recently you could only express this in JavaScript; now CSS
+speaks it directly.
+
+Here's the literal CSS for placing one dot at a given angle, where `--angle` is a
+custom property and `--radius` is how far from the center it sits:
+
+```css
+.dot {
+  --angle: 30deg;
+  --radius: 140px;
+  transform:
+    translateX(calc(cos(var(--angle)) * var(--radius)))
+    translateY(calc(sin(var(--angle)) * var(--radius) * -1));
+}
+```
+
+Two things worth noting. CSS trig functions accept **angle units directly** —
+`cos(30deg)`, `cos(0.125turn)`, and `cos(0.5236)` (radians as a bare number) all
+mean the same thing, which is far friendlier than `Math.cos()` in JavaScript that
+only ever takes radians. And I flip the Y term with `* -1` because screen
+coordinates grow downward, while we usually think of `sin` growing upward.
+
+## From a circle to a rose
+
+A rose curve is barely more complicated. Instead of a fixed radius, the radius
+*itself* breathes as a function of the angle:
+
+```
+r(θ) = cos(k · θ)
+```
+
+When `k` is odd, you get exactly `k` petals. The seven-petal rose is simply
+`k = 7`. (When `k` is even you get `2k` petals — a fun thing to feel for yourself
+on the slider below.) Folding that into the circle equations:
+
+```
+x = cos(7θ) · cos(θ)
+y = cos(7θ) · sin(θ)
+```
+
+You can't stroke a *continuous* curve in pure CSS — a flowing line genuinely needs
+an SVG path or canvas. But you can do something that reads just as beautifully and
+is honest to the medium: sample the curve at many angles and drop a small glowing
+dot at each one. With enough dots, the petals are unmistakable, and every single
+dot is positioned by CSS trig. The radius for dot `i` becomes:
+
+```css
+.petal-dot {
+  /* --t is this dot's angle, set per-dot */
+  --r: cos(calc(var(--k) * var(--t)));   /* the rose radius, -1..1 */
+  --x: calc(cos(var(--t)) * var(--r) * var(--scale));
+  --y: calc(sin(var(--t)) * var(--r) * var(--scale) * -1);
+  transform: translate(var(--x), var(--y));
+}
+```
+
+The petal count `--k`, and per-dot angle `--t`, are the only things that change.
+Everything else is fixed CSS doing the math at paint time.
+
+## Wiring it to sliders
+
+This is where it gets satisfying. Because the geometry lives entirely in custom
+properties, a slider doesn't need to recompute any paths — it just changes a
+number, and CSS repaints every dot. The React side is thin: hold the parameters
+in state, pass them down as CSS variables via `style`, and let the cascade do the
+work.
+
+```tsx
+function Rose({ k, scale, count }: RoseProps) {
+  // pre-compute each dot's angle once; the *positions* are CSS's job
+  const dots = Array.from({ length: count }, (_, i) => {
+    const turns = k % 2 === 0 ? 1 : 0.5;        // odd k closes in half a sweep
+    const t = (i / count) * 360 * turns;         // degrees
+    return t;
+  });
+
+  return (
+    <div className="rose" style={{ "--k": k, "--scale": `${scale}px` } as React.CSSProperties}>
+      {dots.map((t, i) => (
+        <span
+          key={i}
+          className="petal-dot"
+          style={{ "--t": `${t}deg` } as React.CSSProperties}
+        />
+      ))}
+    </div>
+  );
+}
+```
+
+And the slider just sets state:
+
+```tsx
+const [k, setK] = useState(7);
+
+<input
+  type="range" min={1} max={12} step={1}
+  value={k}
+  onChange={(e) => setK(Number(e.target.value))}
+/>
+```
+
+No `useEffect`, no redraw call, no canvas ref. Changing `k` from `7` to `8`
+re-evaluates `cos(8 · t)` for every dot on the next paint. That's the entire
+update path.
+
+> **Why pass numbers as CSS variables instead of computing `x`/`y` in JS?**
+> Two reasons. It keeps the math in one place (the stylesheet), and it means the
+> browser interpolates and paints natively — which matters a lot for the animation
+> in the next section.
+
+## Making the petals glow
+
+The glow is two layered `box-shadow`s plus a bright core. Keep the dot itself
+small and very bright, then stack progressively larger, softer, more transparent
+shadows in the accent color:
+
+```css
+.petal-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent, #e8c97a);
+  box-shadow:
+    0 0 4px  var(--accent),
+    0 0 12px color-mix(in srgb, var(--accent) 70%, transparent),
+    0 0 22px color-mix(in srgb, var(--accent) 40%, transparent);
+}
+```
+
+`color-mix()` lets the outer halos fade to transparent without hand-writing rgba
+values — it pairs naturally with a single `--accent` token, so re-theming the
+whole rose is a one-line change.
+
+## Animating it with Motion
+
+Here's where I'd hand off to [Motion](https://motion.dev) rather than CSS
+keyframes, because the nicest version of this animates the **sweep angle** and lets
+each petal trail in. Since I can't render Motion in this static post, here's
+exactly how I'd wire it in the codebase.
+
+**1. Animate a single driver value, derive everything from it.** Rather than
+animating 200 dots independently, animate one `progress` value from `0 → 1` and
+use it to reveal dots in order — a "drawing" effect.
+
+```tsx
+import { motion, useMotionValue, animate } from "motion/react";
+import { useEffect } from "react";
+
+function AnimatedRose({ k, count, scale }: RoseProps) {
+  const progress = useMotionValue(0);
+
+  useEffect(() => {
+    const controls = animate(progress, 1, {
+      duration: 2.4,
+      ease: "easeInOut",
+    });
+    return controls.stop;
+  }, [k]); // re-trace whenever the petal count changes
+
+  return (
+    <div className="rose">
+      {Array.from({ length: count }).map((_, i) => (
+        <Petal key={i} index={i} count={count} k={k} scale={scale} progress={progress} />
+      ))}
+    </div>
+  );
+}
+```
+
+**2. Each petal subscribes to the driver and fades in at its own threshold.**
+`useTransform` maps the global progress to that one dot's opacity and scale, so the
+rose draws itself stroke-like from `θ = 0` outward.
+
+```tsx
+import { motion, useTransform, type MotionValue } from "motion/react";
+
+function Petal({ index, count, k, scale, progress }: PetalProps) {
+  const threshold = index / count;
+  const t = (index / count) * 360 * (k % 2 === 0 ? 1 : 0.5);
+
+  // dot appears just as the sweep passes its angle
+  const opacity = useTransform(progress, [threshold - 0.04, threshold], [0, 1]);
+  const dotScale = useTransform(progress, [threshold - 0.04, threshold], [0.4, 1]);
+
+  return (
+    <motion.span
+      className="petal-dot"
+      style={{
+        "--t": `${t}deg`,
+        opacity,
+        scale: dotScale,
+      } as any}
+    />
+  );
+}
+```
+
+The `--t` variable still drives the *position* through the CSS above; Motion only
+touches `opacity` and `scale`. That separation is deliberate — layout math stays
+in CSS, temporal animation stays in Motion, and the two never fight over the same
+property.
+
+**3. For an ambient, living version**, drive a continuous rotation instead of a
+one-shot trace. Animate a `--spin` angle with Motion's `animate(..., { repeat: Infinity })`
+and add it into each dot's `--t`, so the whole rose slowly turns while the glow
+shimmers. Wrap that behind a `prefers-reduced-motion` check:
+
+```tsx
+const prefersReduced = useReducedMotion(); // from motion/react
+// ...only start the infinite spin when !prefersReduced
+```
+
+**4. Hover micro-interaction.** A nice touch: on hover, animate `--scale` up by
+~8% with a spring so the rose gently inhales. One `whileHover` on the container,
+animating a CSS variable, and every dot expands outward together because they all
+read from the same `--scale`.
+
+```tsx
+<motion.div
+  className="rose"
+  whileHover={{ "--scale": `${scale * 1.08}px` } as any}
+  transition={{ type: "spring", stiffness: 120, damping: 14 }}
+/>
+```
+
+## Why this approach is worth it
+
+The payoff isn't just "look, no canvas." It's that **the math and the markup are the
+same thing**. There's no rendering loop to keep in sync, no imperative redraw, no
+stale-closure bugs from a `ctx` ref. A slider changes a number; the cascade
+recomputes the geometry; Motion handles only how things appear over time. Each
+layer does one job.
+
+And because it's all custom properties, every knob in this post — petal count,
+scale, dot density, accent color, animation timing — is a single token away from
+being themed, animated, or exposed to the reader. That's the real argument for
+pulling trigonometry into CSS: the parametric curve stops being a thing you *draw*
+and becomes a thing you can *style*.
+
+---
+
+*The interactive demo above runs entirely on CSS `sin()`/`cos()` for positioning.
+Drag `k` to feel the odd/even petal rule, and `density` to watch the dots resolve
+into a continuous bloom.*

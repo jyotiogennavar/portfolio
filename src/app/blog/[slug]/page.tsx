@@ -24,6 +24,7 @@ import {
   Code,
   Img,
 } from '@/components/mdx-components'
+import { RoseDemo } from '@/components/RoseDemo'
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -118,6 +119,7 @@ const mdxComponents = {
   MoreAbout,
   ResourceGrid,
   ResourceCard,
+  RoseDemo,
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {

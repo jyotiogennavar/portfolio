@@ -7,6 +7,7 @@ import {
   Quote,
   NeedToKnow,
   MoreAbout,
+  ProjectLink,
   ResourceGrid,
   ResourceCard,
   H1,
@@ -117,6 +118,7 @@ const mdxComponents = {
   Quote,
   NeedToKnow,
   MoreAbout,
+  ProjectLink,
   ResourceGrid,
   ResourceCard,
   RoseDemo,
@@ -157,34 +159,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           __html: JSON.stringify(structuredData),
         }}
       />
-      <article className="container mx-auto px-2 max-w-3xl">
-        {/* <header className="mb-8">
-          <h1 className="text-4xl font-bold mb-4 text-foreground">{post.title}</h1>
-          <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-4">
-            <time dateTime={post.date}>
-              {new Date(post.date).toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-              })}
-            </time>
-            {post.author && (
-              <span>By {post.author}</span>
-            )}
-            {post.readingTime && (
-              <span>{post.readingTime}</span>
-            )}
-          </div>
-          {post.tags && post.tags.length > 0 && (
-            <div className="flex flex-wrap gap-2 mb-4">
-              {post.tags.map((tag) => (
-                <span key={tag} className="text-xs bg-secondary text-secondary-foreground px-2 py-1 rounded-sm">
-                  {tag}
-                </span>
-              ))}
-            </div>
-          )}
-        </header> */}
+      <article className="container mx-auto mt-20 px-2 max-w-3xl">
+        <header className="mb-8">
+          <h1 className="mb-4 text-4xl font-bold tracking-tight text-foreground">
+            {post.title}
+          </h1>
+        </header>
         <div className="prose prose-lg dark:prose-invert max-w-none">
           <MDXRemote source={post.content} components={mdxComponents} />
         </div>

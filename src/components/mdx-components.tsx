@@ -191,6 +191,34 @@ export function MoreAbout({ children }: { children: React.ReactNode }) {
   )
 }
 
+export function ProjectLink({
+  href,
+  title = "View the project",
+  description,
+}: {
+  href: string
+  title?: string
+  description?: string
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="not-prose mt-10 flex items-start gap-3 rounded-xl bg-card p-5 text-foreground no-underline shadow-none transition-[box-shadow] duration-200 ease hoverable:hover:shadow-[0_8px_32px_rgba(236,72,153,0.4)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+    >
+      <ExternalLink className="mt-0.5 h-5 w-5 shrink-0 text-muted-foreground" aria-hidden="true" />
+      <span>
+        <span className="block font-semibold">{title}</span>
+        {description ? (
+          <span className="mt-1 block text-sm text-muted-foreground">{description}</span>
+        ) : null}
+      </span>
+      <span className="sr-only">(opens in a new tab)</span>
+    </a>
+  )
+}
+
 export function ResourceGrid({ children }: { children: React.ReactNode }) {
   return <div className="grid gap-4 md:grid-cols-2 my-6">{children}</div>
 }

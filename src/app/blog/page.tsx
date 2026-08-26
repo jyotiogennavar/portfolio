@@ -53,7 +53,7 @@ export default function BlogPage() {
 
   return (
     <div className="bg-background text-foreground">
-      <div className="mt-2 mb-8">
+      <div className="mt-20 mb-8">
         <h1 className="mb-4 text-4xl font-bold">Blog</h1>
         <p className="mb-6 max-w-[65ch] text-pretty text-base text-stone-600 dark:text-stone-400">
           Welcome to my blog! Here, I share my thoughts on web development,

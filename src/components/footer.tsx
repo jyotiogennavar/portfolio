@@ -60,12 +60,12 @@ const Footer = () => {
           ))}
         </div>
 
-        <div className="flex flex-wrap items-center justify-between gap-4 max-[26.5625rem]:flex-col max-[26.5625rem]:items-center max-[26.5625rem]:justify-center max-[26.5625rem]:px-4">
-          <div className="flex items-center gap-3 text-sm text-stone-300 max-[26.5625rem]:justify-center">
+        <div className="flex flex-wrap items-center justify-between gap-4 max-[425px]:flex-col max-[425px]:items-center max-[425px]:justify-center max-[425px]:px-4">
+          <div className="flex items-center gap-3 text-sm text-stone-300 max-[425px]:justify-center">
             <p>© {new Date().getFullYear()} Jyoti Ogennavar</p>
           </div>
 
-          <div className="flex items-center gap-3 max-[26.5625rem]:justify-center">
+          <div className="flex items-center gap-3 max-[425px]:justify-center">
             <ThemeToggle />
 
           </div>

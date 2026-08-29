@@ -3,7 +3,9 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Github, Linkedin, Twitter } from "lucide-react"
-import { ThemeToggle } from "@/components/theme-toggle"
+import { ThemeToggle } from "@/components/theme/theme-toggle"
+import Image from "next/image"
+import AnimatedNameSign from "@/components/animated-name-sign"
 
 const PeerlistIcon = ({ className }: { className?: string }) => (
   <svg
@@ -41,37 +43,38 @@ const socialLinks = [
 
 const Footer = () => {
   return (
-    <footer className="mt-16 mb-8 pt-8 border-t border-stone-800">
-      <div className="flex flex-col gap-6">
-        <div className="flex flex-wrap justify-center gap-2">
+    <div className="mb-10 mt-20 border-t border-stone-200 pt-12 dark:border-stone-800">
+      <div className="flex flex-col items-center gap-8">
+        <Image
+          src="/sign-1.svg"
+          alt="Jyoti Ogennavar"
+          width={791}
+          height={168}
+          className="pointer-events-none h-auto w-[min(100%,21rem)] select-none outline-none dark:invert"
+        />
+
+
+
+        <div className="flex w-full flex-wrap items-center justify-between gap-4 pt-1 text-sm text-stone-500 max-[425px]:flex-col max-[425px]:justify-center dark:text-stone-400">
+        <nav aria-label="Social links" className="flex items-center gap-1">
           {socialLinks.map(({ name, href, icon: Icon }) => (
             <Button
               key={name}
               variant="ghost"
-              size="sm"
-              className="gap-2 rounded-full border border-transparent text-stone-500 hoverable:hover:border-stone-200 hoverable:hover:bg-stone-50 hoverable:hover:text-stone-700 dark:text-stone-300 dark:hoverable:hover:border-stone-700 dark:hoverable:hover:bg-stone-900 dark:hoverable:hover:text-stone-50"
+              size="icon"
+              className="rounded-full text-stone-400 hoverable:hover:bg-stone-100 hoverable:hover:text-stone-800 dark:text-stone-400 dark:hoverable:hover:bg-stone-800 dark:hoverable:hover:text-stone-50"
               asChild
             >
-              <Link href={href} target="_blank" rel="noopener noreferrer">
-                <Icon className="w-4 h-4" />
-                {name}
+              <Link href={href} target="_blank" rel="noopener noreferrer" aria-label={name}>
+                <Icon className="h-4 w-4" />
               </Link>
             </Button>
           ))}
-        </div>
-
-        <div className="flex flex-wrap items-center justify-between gap-4 max-[425px]:flex-col max-[425px]:items-center max-[425px]:justify-center max-[425px]:px-4">
-          <div className="flex items-center gap-3 text-sm text-stone-300 max-[425px]:justify-center">
-            <p>© {new Date().getFullYear()} Jyoti Ogennavar</p>
-          </div>
-
-          <div className="flex items-center gap-3 max-[425px]:justify-center">
-            <ThemeToggle />
-
-          </div>
+        </nav>
+          <ThemeToggle />
         </div>
       </div>
-    </footer>
+    </div>
   )
 }
 

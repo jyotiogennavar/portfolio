@@ -181,6 +181,25 @@ export function NeedToKnow({ children }: { children: React.ReactNode }) {
   )
 }
 
+export function HowItWorks({
+  title = "How it works",
+  children,
+}: {
+  title?: string
+  children: React.ReactNode
+}) {
+  return (
+    <details className="not-prose my-10 rounded-xl border border-border bg-muted/40 px-5 py-1">
+      <summary className="flex min-h-11 cursor-pointer list-none items-center font-semibold marker:content-none [&::-webkit-details-marker]:hidden">
+        {title}
+      </summary>
+      <div className="pb-5 pt-2 text-sm leading-7 text-muted-foreground [&_a]:text-foreground [&_pre]:my-4 [&_pre]:overflow-x-auto [&_pre]:rounded-lg [&_pre]:border [&_pre]:bg-muted/60 [&_pre]:p-4 [&_pre]:text-sm">
+        {children}
+      </div>
+    </details>
+  )
+}
+
 export function MoreAbout({ children }: { children: React.ReactNode }) {
   return (
     <Card className="border-blue-200 bg-blue-50 dark:border-blue-800 dark:bg-blue-950/20 my-8">

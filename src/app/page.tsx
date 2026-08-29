@@ -9,16 +9,16 @@ import { Button } from "@/components/ui/button";
 import {
   Mail,
   File,
-  Telescope,
   Sprout,
   Sparkle,
   Puzzle,
   Github,
   ArrowRight,
   ChevronUp,
+  Eye,
 } from "lucide-react";
 import Link from "next/link";
-// import { ThemeToggle } from "@/components/theme-toggle";
+
 
 // Animation variants
 const containerVariants = {
@@ -106,60 +106,14 @@ export default function Home() {
             <h1 className="text-2xl md:text-4xl ">
               Hey, I&apos;m <span className="font-bold">Jyoti Ogennavar</span>
             </h1>
-            <p className="mt-2 text-stone-600 dark:text-stone-400 flex items-center justify-center md:justify-start md:text-lg gap-2">
-              Frontend Developer based in Pune
+            <p className="mt-2 text-stone-600 dark:text-stone-400 flex items-center justify-center md:justify-start gap-2">
+             A frontend developer with a passion for building user-friendly and efficient web applications.
             </p>
           </div>
         </div>
       </motion.main>
 
-      {/* About Section*/}
-      <motion.section className="mt-8 mb-8" variants={itemVariants}>
-        <div className="mt-4 space-y-4">
-          <p className="max-w-[65ch] leading-relaxed text-stone-700 dark:text-stone-300">
-            Hi, as a Web Developer with 3+ years of experience, I&apos;m
-            passionate about crafting effective solutions that benefit both
-            users and businesses. When I&apos;m not coding, you&apos;ll find me
-            exploring new technologies, consuming copious amounts of coffee, or
-            trying to share my knowledge through technical writing.
-          </p>
-        </div>
-      </motion.section>
-      {/* Skills Section - Improved responsiveness */}
-      <motion.section className="mt-10" variants={itemVariants}>
-        <h2 className="text-sm text-stone-500 dark:text-stone-400 uppercase tracking-wide font-medium flex items-center gap-2">
-          <Sparkle size={16} className="pointer-events-none text-stone-500 dark:text-stone-400" />{" "}
-          Things I Am Really Good At
-        </h2>
-        <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-2">
-          <Card className="rounded-xl p-4 leading-relaxed">
-            <CardTitle className="text-lg">
-              Responsive & Accessible Design
-            </CardTitle>
-            <CardDescription className="mt-3 text-pretty text-stone-600 dark:text-stone-400">
-              Crafting intuitive user interfaces that adapt across all devices
-              while prioritizing accessibility.
-            </CardDescription>
-          </Card>
-          <Card className="rounded-xl p-4 leading-relaxed">
-            <CardTitle className="text-lg">
-              Pixel-Perfect Implementation
-            </CardTitle>
-            <CardDescription className="mt-3 text-pretty text-stone-600 dark:text-stone-400">
-              Bringing designs to life with precision and attention to detail
-            </CardDescription>
-          </Card>
-          <Card className="rounded-xl p-4 leading-relaxed">
-            <CardTitle className="text-lg">
-              Performance & UX Optimization
-            </CardTitle>
-            <CardDescription className="mt-3 text-pretty text-stone-600 dark:text-stone-400">
-              Optimizing for accessibility, speed, and exceptional user
-              experience
-            </CardDescription>
-          </Card>
-        </div>
-      </motion.section>
+
       {/* Projects */}
       <motion.section className="mt-10" variants={itemVariants}>
         <h2 className="text-sm text-stone-500 dark:text-stone-400 uppercase tracking-wide font-medium flex items-center gap-2">
@@ -169,7 +123,7 @@ export default function Home() {
         <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
           <Card className="flex h-full flex-col rounded-xl p-4">
             <div className="flex-1">
-              <CardTitle className="mb-3 text-lg">Travel Blog Site</CardTitle>
+              <CardTitle className="mb-3 text-lg">World Wide Wonder</CardTitle>
               <CardDescription className="mb-4 text-pretty text-stone-600 dark:text-stone-400">
                 A content-driven travel blog built with Next.js and Sanity CMS,
                 designed for fast performance, clean UI, and easy content
@@ -191,17 +145,26 @@ export default function Home() {
           <Card className="flex h-full flex-col rounded-xl p-4">
             <div className="flex-1">
               <CardTitle className="mb-3 text-lg">
-                Financial Dashboard
+                Dreamfund 
               </CardTitle>
               <CardDescription className="mb-4 text-pretty text-stone-600 dark:text-stone-400">
-                An interactive financial dashboard that visualizes key metrics
-                and trends using real-time data handling, reusable UI
-                components, and clear data-driven layouts.
+                A goal-based savings tracker that helps you set a target, track contributions, understand what&apos;s left, and know how much you need to save each month to reach your goal.
               </CardDescription>
             </div>
-            <p className="mt-auto text-sm text-stone-500 dark:text-stone-400">
-              Links will be available when this project ships.
-            </p>
+            <div className="mt-auto flex flex-wrap items-center gap-2">
+              <Button variant="outline" size="sm" className="gap-2" asChild>
+                <Link href="https://github.com/jyotiogennavar/dreamfund" target="_blank" rel="noopener noreferrer">
+                  <Github className="h-4 w-4" />
+                  View on GitHub
+                </Link>
+              </Button>
+             <Link href="https://dreamfund-rose.vercel.app/" target="_blank" rel="noopener noreferrer">
+              <Button variant="outline" size="sm" className="gap-2">
+                <Eye className="h-4 w-4" />
+                View Live
+              </Button>
+             </Link>
+            </div>
           </Card>
         </div>
       </motion.section>
@@ -258,43 +221,40 @@ export default function Home() {
           </Link>
         </div>
       </motion.section>
-
-      {/* Currently Learning Section - New */}
-      <motion.section className="mt-10" variants={itemVariants}>
+            {/* Skills Section - Improved responsiveness */}
+            <motion.section className="mt-10" variants={itemVariants}>
         <h2 className="text-sm text-stone-500 dark:text-stone-400 uppercase tracking-wide font-medium flex items-center gap-2">
-          <Telescope size={16} className="pointer-events-none text-stone-500 dark:text-stone-400" />{" "}
-          Currently learning
+          <Sparkle size={16} className="pointer-events-none text-stone-500 dark:text-stone-400" />{" "}
+          Things I Am Really Good At
         </h2>
-        <Link
-          href="https://animations.dev/"
-          target="_blank"
-          title="Animations of the Web by Emil"
-          className="hover:underline block"
-        >
-          <p className="text-stone-600 dark:text-stone-400 mt-6">
-            Animations on the Web by Emil Kowalskil
-          </p>
-        </Link>
-        <Link
-          href="https://www.road-to-next.com/"
-          target="_blank"
-          title="Road to Next JS by Rob"
-          className="hover:underline block mt-2"
-        >
-          <p className="text-stone-600 dark:text-stone-400 mt-2">
-            Road to Next JS by Robin Wieruch
-          </p>
-        </Link>
-        <Link
-          href="https://animations.dev/"
-          target="_blank"
-          title="Whimsical Animations by Josh Comeau"
-          className="hover:underline block mt-2"
-        >
-          <p className="text-stone-600 dark:text-stone-400 mt-2">
-            Whimsical Animations by Josh Comeau
-          </p>
-        </Link>
+        <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-2">
+          <Card className="rounded-xl p-4 leading-relaxed">
+            <CardTitle className="text-lg">
+              Responsive & Accessible Design
+            </CardTitle>
+            <CardDescription className="mt-3 text-pretty text-stone-600 dark:text-stone-400">
+              Crafting intuitive user interfaces that adapt across all devices
+              while prioritizing accessibility.
+            </CardDescription>
+          </Card>
+          <Card className="rounded-xl p-4 leading-relaxed">
+            <CardTitle className="text-lg">
+              Pixel-Perfect Implementation
+            </CardTitle>
+            <CardDescription className="mt-3 text-pretty text-stone-600 dark:text-stone-400">
+              Bringing designs to life with precision and attention to detail
+            </CardDescription>
+          </Card>
+          <Card className="rounded-xl p-4 leading-relaxed">
+            <CardTitle className="text-lg">
+              Performance & UX Optimization
+            </CardTitle>
+            <CardDescription className="mt-3 text-pretty text-stone-600 dark:text-stone-400">
+              Optimizing for accessibility, speed, and exceptional user
+              experience
+            </CardDescription>
+          </Card>
+        </div>
       </motion.section>
 
       {/* Tech Stack */}

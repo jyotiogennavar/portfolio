@@ -6,6 +6,7 @@ export default {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/lab/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
   	extend: {
@@ -55,7 +56,19 @@ export default {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
-  		}
+  		},
+  		keyframes: {
+  			"exploding-heart-fade": {
+  				to: { opacity: "0" },
+  			},
+  			"exploding-heart-from-center": {
+  				from: { transform: "translate(0px, 0px)" },
+  			},
+  		},
+  		animation: {
+  			"exploding-heart-particle":
+  				"exploding-heart-fade var(--fade-duration) forwards, exploding-heart-from-center 500ms",
+  		},
   	}
   },
   // eslint-disable-next-line @typescript-eslint/no-require-imports

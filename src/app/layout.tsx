@@ -2,7 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Bricolage_Grotesque } from "next/font/google"
 import "./globals.css"
-import { ThemeProvider } from "@/components/theme-provider"
+import { ThemeProvider } from "@/components/theme/theme-provider"
 import { Navbar } from "@/components/navbar"
 import Footer from "@/components/footer"
 
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     template: "%s | Jyoti Ogennavar",
   },
   description:
-    "Frontend Developer with 3+ years of experience crafting responsive, accessible web applications. Specializing in React, Next.js, and modern web technologies.",
+    "Frontend Developer with 4+ years of experience crafting responsive, accessible web applications. Specializing in React, Next.js, and modern web technologies.",
   keywords: [
     "Frontend Developer",
     "React Developer",
@@ -85,7 +85,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const containerClasses = "max-w-[700px] mx-auto px-4"
+  const containerClasses = "max-w-[800px] mx-auto px-4"
 
   return (
     <html lang="en" suppressHydrationWarning>

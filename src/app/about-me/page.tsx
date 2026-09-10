@@ -6,7 +6,7 @@ const AboutMePage = () => {
           <div className="rounded-xl border-dashed border-4 bg-card text-card-foreground p-8 hover:border-pink-500 transition-colors text-center w-[500px] min-h-[300px] flex flex-col items-center justify-center">
             <h1 className="text-4xl font-bold mb-4">About Me</h1>
 
-            <p className="text-stone-800 dark:text-stone-200 text-lg text-balance">
+            <p className="text-pretty text-lg text-stone-800 dark:text-stone-200">
               Still under construction — like most good things in life
             </p>
           </div>

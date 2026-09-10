@@ -103,10 +103,10 @@ export default function Home() {
             </div>
           </div>
           <div className="flex flex-col justify-center text-center md:text-left h-full md:justify-center">
-            <h1 className="text-2xl md:text-4xl ">
+            <h1 className="text-2xl tracking-tight md:text-4xl">
               Hey, I&apos;m <span className="font-bold">Jyoti Ogennavar</span>
             </h1>
-            <p className="mt-2 text-stone-600 dark:text-stone-400 flex items-center justify-center md:justify-start gap-2">
+            <p className="mx-auto mt-2 max-w-prose text-pretty leading-relaxed text-stone-600 dark:text-stone-400 md:mx-0 md:text-start">
              A frontend developer with a passion for building user-friendly and efficient web applications.
             </p>
           </div>
@@ -262,31 +262,7 @@ export default function Home() {
         <TechStack />
       </motion.section>
 
-      {/* Contact/CTA Section - New */}
-      <motion.section className="mt-10">
-        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-stone-200 to-stone-100 p-8 text-center dark:from-stone-800 dark:to-stone-700">
-          <h2 className="mb-4 text-2xl font-bold">Let&apos;s work together</h2>
-          <p className="mx-auto mb-6 max-w-md text-pretty text-stone-600 dark:text-stone-300">
-            I&apos;m always interested in new opportunities and exciting
-            projects. Let&apos;s discuss how we can bring your ideas to life.
-          </p>
-          <div className="flex justify-center gap-3">
-            <Button className="gap-2" onClick={handleContactClick}>
-              <Mail className="h-4 w-4" />
-              Send an email
-            </Button>
-            <Button
-              variant="outline"
-              className="gap-2"
-              onClick={handleResumeDownload}
-            >
-              <File className="w-4 h-4" />
-              Resume
-            </Button>
-          </div>
-        </div>
-      </motion.section>
-
+ 
       {/* Scroll to Top Button */}
       {showScrollTop && (
         <motion.button

@@ -123,7 +123,7 @@ function ExperimentCard({ experiment }: { experiment: LabExperiment }) {
         <h2 className="text-base font-semibold leading-tight tracking-[-0.011em] md:text-lg">
           {experiment.name}
         </h2>
-        <p className="mt-2 text-pretty text-sm text-stone-600 dark:text-stone-400">
+        <p className="mt-2 text-pretty text-sm leading-relaxed text-stone-600 dark:text-stone-400">
           {experiment.summary}
         </p>
       </div>

@@ -54,7 +54,7 @@ export default function BlogPage() {
   return (
     <div className="bg-background text-foreground">
       <div className="mt-20 mb-8">
-        <h1 className="mb-4 text-4xl font-bold">Blog</h1>
+        <h1 className="mb-4 text-4xl font-bold tracking-tight">Blog</h1>
         <p className="mb-6 max-w-[65ch] text-pretty text-base text-stone-600 dark:text-stone-400">
           Welcome to my blog! Here, I share my thoughts on web development,
           design, and technology.
@@ -72,7 +72,7 @@ export default function BlogPage() {
                 {post.title}
               </h2>
             </Link>
-            <p className="mb-4 text-pretty text-stone-600 dark:text-stone-400">
+            <p className="mb-4 text-pretty leading-relaxed text-stone-600 dark:text-stone-400">
               {post.excerpt}
             </p>
             <time
@@ -97,7 +97,7 @@ export default function BlogPage() {
             </h2>
             <ExternalLink className="mt-1 h-5 w-5 shrink-0 text-muted-foreground" />
           </Link>
-          <p className="mb-4 text-pretty text-stone-600 dark:text-stone-400">
+          <p className="mb-4 text-pretty leading-relaxed text-stone-600 dark:text-stone-400">
             Learn how to optimize your website&apos;s on-page SEO to improve visibility and ranking on search engines.
           </p>
           <span className="text-sm text-stone-500 dark:text-stone-400 block">Medium</span>
@@ -115,7 +115,7 @@ export default function BlogPage() {
             </h2>
             <ExternalLink className="mt-1 h-5 w-5 shrink-0 text-muted-foreground" />
           </Link>
-          <p className="mb-4 text-pretty text-stone-600 dark:text-stone-400">
+          <p className="mb-4 text-pretty leading-relaxed text-stone-600 dark:text-stone-400">
             Discover the importance of sitemaps for SEO and user experience, and learn how to create and submit them effectively.
           </p>
           <span className="text-sm text-stone-500 dark:text-stone-400 block">Medium</span>

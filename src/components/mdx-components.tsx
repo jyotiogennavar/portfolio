@@ -50,7 +50,7 @@ export function H4({ children, ...props }: React.HTMLAttributes<HTMLHeadingEleme
 
 export function P({ children, ...props }: React.HTMLAttributes<HTMLParagraphElement>) {
   return (
-    <p {...props} className="leading-7 my-4">
+    <p {...props} className="my-4 leading-relaxed">
       {children}
     </p>
   )
@@ -58,7 +58,7 @@ export function P({ children, ...props }: React.HTMLAttributes<HTMLParagraphElem
 
 export function A({ children, ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
   return (
-    <a {...props} className="break-words text-primary underline decoration-dotted underline-offset-4 hoverable:hover:text-primary/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+    <a {...props} className="break-words text-primary underline decoration-dotted decoration-from-font underline-offset-4 hoverable:hover:text-primary/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
       {children}
     </a>
   )
@@ -92,7 +92,7 @@ export function Blockquote({ children, ...props }: React.BlockquoteHTMLAttribute
   return (
     <blockquote
       {...props}
-      className="border-l-4 border-muted-foreground/40 pl-6 py-2 my-6 text-muted-foreground italic"
+      className="my-6 border-l-4 border-muted-foreground/40 py-2 pl-6 text-muted-foreground"
     >
       {children}
     </blockquote>
@@ -102,7 +102,7 @@ export function Blockquote({ children, ...props }: React.BlockquoteHTMLAttribute
 export function Quote({ children, author }: { children: React.ReactNode; author?: string }) {
   return (
     <blockquote className="border-l-4 border-primary pl-6 py-4 bg-muted/50 rounded-r-lg my-8">
-      <p className="text-lg italic mb-2">{children}</p>
+      <p className="mb-2 text-lg">{children}</p>
       {author && <cite className="text-sm text-muted-foreground">— {author}</cite>}
     </blockquote>
   )

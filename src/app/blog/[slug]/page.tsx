@@ -161,13 +161,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           __html: JSON.stringify(structuredData),
         }}
       />
-      <article className="container mx-auto mt-20 px-2 max-w-3xl">
+      <article className="container mx-auto mt-20 max-w-prose px-2">
         <header className="mb-8">
           <h1 className="mb-4 text-4xl font-bold tracking-tight text-foreground">
             {post.title}
           </h1>
         </header>
-        <div className="prose prose-lg dark:prose-invert max-w-none">
+        <div className="prose prose-lg max-w-none dark:prose-invert">
           <MDXRemote source={post.content} components={mdxComponents} />
         </div>
       </article>

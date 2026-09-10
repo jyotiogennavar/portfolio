@@ -107,7 +107,7 @@ export function RoseDemo() {
           <button
             type="button"
             className={cn(
-              "mt-[0.35rem] min-h-11 cursor-pointer justify-self-start rounded-full border border-white/55 bg-transparent px-5 py-[0.4rem] font-sans text-[0.82rem] text-white",
+              "mt-[0.35rem] min-h-11 cursor-pointer justify-self-start rounded-full border border-white/55 bg-transparent px-5 py-[0.4rem] font-sans text-sm text-white",
               "transition-[opacity,background-color,transform] duration-150 ease",
               "hoverable:hover:bg-white/[0.06] active:scale-[0.97]",
               "motion-reduce:transition-[opacity,background-color] motion-reduce:active:scale-100",
@@ -185,7 +185,7 @@ function Formula({
   useMotionValueEvent(d, "change", setD);
 
   return (
-    <div className="mb-5 whitespace-pre-line text-left font-mono text-[0.72rem] leading-[1.75] tracking-[0.02em] text-[#8a8a8a]">
+    <div className="mb-5 whitespace-pre-line text-start font-mono text-xs leading-relaxed tracking-[0.02em] text-[#8a8a8a]">
       {`x = ${Math.round(r)}cos(t) − ${formatD(dd)}·cos(${Math.round(kk)}t)`}
       {"\n"}
       {`y = ${Math.round(r)}sin(t) − ${formatD(dd)}·sin(${Math.round(kk)}t)`}
@@ -215,7 +215,7 @@ function Control({
   const pct = ((current - min) / (max - min)) * 100;
 
   return (
-    <label className="grid gap-[0.45rem] font-sans text-[0.82rem] text-[#f2f2f2]">
+    <label className="grid gap-[0.45rem] font-sans text-sm text-[#f2f2f2]">
       <span className="flex items-baseline justify-between text-[#c8c8c8]">
         <span>{label}</span>
         <span className="tabular-nums">{format(current)}</span>

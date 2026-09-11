@@ -7,8 +7,6 @@ import TechStack from "@/components/techstack";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {
-  Mail,
-  File,
   Sprout,
   Sparkle,
   Puzzle,
@@ -57,21 +55,6 @@ export default function Home() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const handleContactClick = () => {
-    window.location.href =
-      "mailto:hey@jyotiogennavar.com?subject=Project Inquiry&body=Hi Jyoti, I'd like to discuss a project opportunity with you.";
-  };
-
-  const handleResumeDownload = () => {
-    // Create a link element and trigger download
-    const link = document.createElement("a");
-    link.href = "/resume-jyoti-ogennavar.pdf";
-    link.download = "Jyoti-Ogennavar-Resume.pdf";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
 
   const scrollToTop = () => {
     window.scrollTo({

@@ -5,7 +5,6 @@ import "./globals.css"
 import { ThemeProvider } from "@/components/theme/theme-provider"
 import { Navbar } from "@/components/navbar"
 import Footer from "@/components/footer"
-import { LapseDev } from "@/components/lapse-dev"
 
 const bricolage = Bricolage_Grotesque({
   variable: "--font-bricolage",
@@ -97,7 +96,6 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
       </head>
       <body className={bricolage.variable}>
-        {process.env.NODE_ENV !== "production" && <LapseDev />}
         <ThemeProvider>
           <a
             href="#content"

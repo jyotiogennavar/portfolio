@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button"
 import { Github, Linkedin, Twitter } from "lucide-react"
 import { ThemeToggle } from "@/components/theme/theme-toggle"
 import Image from "next/image"
-import AnimatedNameSign from "@/components/animated-name-sign"
 
 const PeerlistIcon = ({ className }: { className?: string }) => (
   <svg

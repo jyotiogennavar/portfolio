@@ -62,40 +62,52 @@ export default function BlogPage() {
       </div>
 
       <div className="grid gap-4">
-        {posts.map((post) => (
+        {posts.length === 0 ? (
+          <div className="flex min-h-[168px] flex-col justify-center rounded-xl bg-card p-6 shadow-raised">
+            <h2 className="text-xl font-semibold">No posts yet</h2>
+            <p className="mt-2 max-w-[50ch] text-pretty text-stone-600 dark:text-stone-400">
+              New articles will land here. In the meantime, the Medium pieces below are a good place to start.
+            </p>
+          </div>
+        ) : (
+          posts.map((post) => (
           <article
             key={post.slug}
-            className="rounded-xl border border-border bg-card p-6"
+            className="rounded-xl bg-card p-6 shadow-raised"
           >
-            <Link href={`/blog/${post.slug}`}>
-              <h2 className="mb-2 text-xl font-semibold underline-offset-4 hoverable:hover:underline hoverable:hover:decoration-pink-500 hoverable:hover:decoration-wavy">
+            <Link
+              href={`/blog/${post.slug}`}
+              className="inline-flex min-h-10 items-center rounded-md transition-[color] duration-150 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            >
+              <h2 className="text-xl font-semibold underline-offset-4 hoverable:hover:underline hoverable:hover:decoration-pink-500 hoverable:hover:decoration-wavy">
                 {post.title}
               </h2>
             </Link>
-            <p className="mb-4 text-pretty leading-relaxed text-stone-600 dark:text-stone-400">
+            <p className="mb-4 mt-2 text-pretty leading-relaxed text-stone-600 dark:text-stone-400">
               {post.excerpt}
             </p>
             <time
-              className="text-sm text-stone-500 dark:text-stone-400 block"
+              className="block text-sm tabular-nums text-stone-500 dark:text-stone-400"
               dateTime={post.date}
             >
               {post.formattedDate}
             </time>
           </article>
-        ))}
+          ))
+        )}
         
         {/* External Medium Articles */}
-        <article className="rounded-xl border border-border bg-card p-6">
+        <article className="rounded-xl bg-card p-6 shadow-raised">
           <Link
             href="https://medium.com/design-bootcamp/boosting-website-visibility-a-complete-guide-to-on-page-seo-for-web-developers-7da71d5f95d2"
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-start gap-2"
+            className="group flex min-h-10 items-start gap-2 rounded-md transition-[color] duration-150 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           >
             <h2 className="mb-2 flex-1 text-xl font-semibold underline-offset-4 hoverable:hover:underline hoverable:hover:decoration-pink-500 hoverable:hover:decoration-wavy">
               Boosting Website Visibility: A Complete Guide to On-Page SEO for Web Developers
             </h2>
-            <ExternalLink className="mt-1 h-5 w-5 shrink-0 text-muted-foreground" />
+            <ExternalLink className="pointer-events-none mt-1 h-5 w-5 shrink-0 text-muted-foreground" />
           </Link>
           <p className="mb-4 text-pretty leading-relaxed text-stone-600 dark:text-stone-400">
             Learn how to optimize your website&apos;s on-page SEO to improve visibility and ranking on search engines.
@@ -103,17 +115,17 @@ export default function BlogPage() {
           <span className="text-sm text-stone-500 dark:text-stone-400 block">Medium</span>
         </article>
 
-        <article className="rounded-xl border border-border bg-card p-6">
+        <article className="rounded-xl bg-card p-6 shadow-raised">
           <Link
             href="https://medium.com/design-bootcamp/website-sitemaps-101-your-websites-guide-to-success-3bf7c04129ce"
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-start gap-2"
+            className="group flex min-h-10 items-start gap-2 rounded-md transition-[color] duration-150 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           >
             <h2 className="mb-2 flex-1 text-xl font-semibold underline-offset-4 hoverable:hover:underline hoverable:hover:decoration-pink-500 hoverable:hover:decoration-wavy">
               Website Sitemaps 101: your website&apos;s guide to success
             </h2>
-            <ExternalLink className="mt-1 h-5 w-5 shrink-0 text-muted-foreground" />
+            <ExternalLink className="pointer-events-none mt-1 h-5 w-5 shrink-0 text-muted-foreground" />
           </Link>
           <p className="mb-4 text-pretty leading-relaxed text-stone-600 dark:text-stone-400">
             Discover the importance of sitemaps for SEO and user experience, and learn how to create and submit them effectively.

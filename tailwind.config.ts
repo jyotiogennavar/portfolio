@@ -57,6 +57,22 @@ export default {
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
   		},
+  		fontWeight: {
+  			normal: 'var(--font-weight-normal)',
+  			medium: 'var(--font-weight-medium)',
+  			semibold: 'var(--font-weight-semibold)',
+  			bold: 'var(--font-weight-bold)',
+  		},
+  		zIndex: {
+  			dropdown: 'var(--z-dropdown)',
+  			modal: 'var(--z-modal)',
+  			tooltip: 'var(--z-tooltip)',
+  			toast: 'var(--z-toast)',
+  		},
+  		boxShadow: {
+  			raised: 'var(--elevation-raised)',
+  			'raised-hover': 'var(--elevation-raised-hover)',
+  		},
   		keyframes: {
   			"exploding-heart-fade": {
   				to: { opacity: "0" },

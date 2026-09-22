@@ -135,7 +135,7 @@ export function BlogPostClient({ frontmatter, content, tableOfContents }: BlogPo
   return (
     <div className="min-h-screen bg-background">
       {/* Progress Bar */}
-      <motion.div className="fixed top-0 left-0 right-0 h-1 bg-primary z-50 origin-left" style={{ scaleX }} />
+      <motion.div className="fixed left-0 right-0 top-0 z-tooltip h-1 origin-left bg-primary" style={{ scaleX }} />
 
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-5xl mx-auto">
@@ -150,10 +150,10 @@ export function BlogPostClient({ frontmatter, content, tableOfContents }: BlogPo
               {frontmatter.category}
             </Badge>
             <h1 className="mb-4 text-4xl font-bold tracking-tight">{frontmatter.title}</h1>
-            <div className="flex items-center gap-6 text-muted-foreground mb-6">
+            <div className="mb-6 flex items-center gap-6 text-muted-foreground">
               <div className="flex items-center gap-2">
-                <Calendar className="h-4 w-4" />
-                <span>
+                <Calendar className="pointer-events-none h-4 w-4 select-none" />
+                <span className="tabular-nums">
                   {new Date(frontmatter.date).toLocaleDateString("en-US", {
                     year: "numeric",
                     month: "long",
@@ -162,8 +162,8 @@ export function BlogPostClient({ frontmatter, content, tableOfContents }: BlogPo
                 </span>
               </div>
               <div className="flex items-center gap-2">
-                <Clock className="h-4 w-4" />
-                <span>{frontmatter.readingTime}</span>
+                <Clock className="pointer-events-none h-4 w-4 select-none" />
+                <span className="tabular-nums">{frontmatter.readingTime}</span>
               </div>
             </div>
             <Separator />
@@ -220,10 +220,10 @@ export function BlogPostClient({ frontmatter, content, tableOfContents }: BlogPo
                         key={id}
                         onClick={() => scrollToSection(id)}
                         className={cn(
-                          "block w-full rounded px-2 py-2 text-left text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+                          "block w-full rounded px-2 py-2 text-left text-sm font-medium transition-[color,background-color] duration-150 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
                           level === 3 && "ms-4",
                           activeSection === id
-                            ? "bg-primary/10 font-medium text-primary"
+                            ? "bg-primary/10 text-primary"
                             : "text-muted-foreground hoverable:hover:bg-muted hoverable:hover:text-foreground",
                         )}
                       >

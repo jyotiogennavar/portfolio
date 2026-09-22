@@ -100,7 +100,7 @@ export default function Home() {
       {/* Projects */}
       <motion.section className="mt-10" variants={itemVariants}>
         <h2 className="text-sm text-stone-500 dark:text-stone-400 uppercase tracking-wide font-medium flex items-center gap-2">
-          <Puzzle size={16} className="pointer-events-none text-stone-500 dark:text-stone-400" />
+          <Puzzle size={16} className="pointer-events-none select-none text-stone-500 dark:text-stone-400" />
           Projects
         </h2>
         <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -114,7 +114,7 @@ export default function Home() {
               </CardDescription>
             </div>
             <div className="mt-auto flex flex-wrap items-center gap-2">
-              <Button variant="outline" size="sm" className="gap-2" asChild>
+              <Button variant="outline" size="sm" asChild>
                 <Link href="https://github.com/jyotiogennavar/world-wide-wonder" target="_blank" rel="noopener noreferrer">
                   <Github className="h-4 w-4" />
                   View on GitHub
@@ -135,18 +135,18 @@ export default function Home() {
               </CardDescription>
             </div>
             <div className="mt-auto flex flex-wrap items-center gap-2">
-              <Button variant="outline" size="sm" className="gap-2" asChild>
+              <Button variant="outline" size="sm" asChild>
                 <Link href="https://github.com/jyotiogennavar/dreamfund" target="_blank" rel="noopener noreferrer">
                   <Github className="h-4 w-4" />
                   View on GitHub
                 </Link>
               </Button>
-             <Link href="https://dreamfund-rose.vercel.app/" target="_blank" rel="noopener noreferrer">
-              <Button variant="outline" size="sm" className="gap-2">
-                <Eye className="h-4 w-4" />
-                View Live
+              <Button variant="outline" size="sm" asChild>
+                <Link href="https://dreamfund-rose.vercel.app/" target="_blank" rel="noopener noreferrer">
+                  <Eye className="h-4 w-4" />
+                  View Live
+                </Link>
               </Button>
-             </Link>
             </div>
           </Card>
         </div>
@@ -155,7 +155,7 @@ export default function Home() {
       {/* Blogs Section - Added content */}
       <motion.section className="mt-10" variants={itemVariants}>
         <h2 className="text-sm text-stone-500 dark:text-stone-400 uppercase tracking-wide font-medium flex items-center gap-2">
-          <Sprout size={16} className="pointer-events-none text-stone-500 dark:text-stone-400" />{" "}
+          <Sprout size={16} className="pointer-events-none select-none text-stone-500 dark:text-stone-400" />{" "}
           Blogs
         </h2>
 
@@ -164,7 +164,7 @@ export default function Home() {
             href="https://medium.com/design-bootcamp/boosting-website-visibility-a-complete-guide-to-on-page-seo-for-web-developers-7da71d5f95d2"
             target="_blank"
             title="Boosting Website Visibility: A Complete Guide to On-Page SEO for Web Developers"
-            className="block"
+            className="block rounded-md transition-[color] duration-150 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           >
             <article>
               <h3 className="font-semibold">
@@ -182,7 +182,7 @@ export default function Home() {
             href="https://medium.com/design-bootcamp/website-sitemaps-101-your-websites-guide-to-success-3bf7c04129ce"
             target="_blank"
             title="Website Sitemaps 101: your website’s guide to success"
-            className="block"
+            className="block rounded-md transition-[color] duration-150 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           >
             <article>
               <h3 className="font-semibold">
@@ -197,7 +197,7 @@ export default function Home() {
 
           <Link
             href="/blog"
-            className="mt-2 hover:underline flex items-center gap-2"
+            className="mt-2 inline-flex min-h-10 items-center gap-2 rounded-md transition-[color] duration-150 ease-out hoverable:hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           >
             Read more articles
             <ArrowRight className="w-4 h-4" />
@@ -207,7 +207,7 @@ export default function Home() {
             {/* Skills Section - Improved responsiveness */}
             <motion.section className="mt-10" variants={itemVariants}>
         <h2 className="text-sm text-stone-500 dark:text-stone-400 uppercase tracking-wide font-medium flex items-center gap-2">
-          <Sparkle size={16} className="pointer-events-none text-stone-500 dark:text-stone-400" />{" "}
+          <Sparkle size={16} className="pointer-events-none select-none text-stone-500 dark:text-stone-400" />{" "}
           Things I Am Really Good At
         </h2>
         <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-2">
@@ -250,7 +250,7 @@ export default function Home() {
       {showScrollTop && (
         <motion.button
           onClick={scrollToTop}
-          className="fixed bottom-6 right-6 z-50 flex h-11 w-11 items-center justify-center rounded-full bg-stone-200 shadow-lg will-change-transform transition-[transform,background-color] duration-200 ease-out hoverable:hover:scale-[1.04] hoverable:hover:bg-stone-300 dark:bg-stone-800 dark:hoverable:hover:bg-stone-600"
+          className="fixed bottom-[calc(1.5rem+env(safe-area-inset-bottom))] right-6 z-toast flex h-11 w-11 items-center justify-center rounded-full bg-stone-200 shadow-raised transition-[transform,background-color] duration-150 ease-out active:scale-[0.96] hoverable:hover:bg-stone-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background dark:bg-stone-800 dark:hoverable:hover:bg-stone-600"
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0 }}

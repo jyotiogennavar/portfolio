@@ -27,10 +27,17 @@ const SWAP = { type: "spring", duration: 0.4, bounce: 0 } as const;
 const TAP = { duration: 0.15 } as const;
 
 const dockControlClass =
-  "relative flex h-full min-w-9 shrink-0 cursor-pointer touch-manipulation items-center justify-center rounded-2xl border-0 bg-transparent px-2 text-sm font-medium text-muted-foreground before:absolute before:inset-[-4px] before:rounded-[20px] before:content-[''] hoverable:hover:bg-foreground/[0.08] hoverable:hover:text-foreground focus-visible:outline-none focus-visible:shadow-[inset_0_0_0_2px_hsl(var(--ring))]";
+  "relative flex h-full min-w-9 shrink-0 cursor-pointer touch-manipulation items-center justify-center rounded-2xl border-0 bg-transparent px-2 text-sm font-medium text-muted-foreground transition-[color,background-color] duration-150 ease-out before:absolute before:inset-x-0 before:-inset-y-1 before:rounded-[20px] before:content-[''] hoverable:hover:bg-foreground/[0.08] hoverable:hover:text-foreground focus-visible:outline-none focus-visible:shadow-[inset_0_0_0_2px_hsl(var(--ring))]";
 
 const dockLinkClass =
-  "relative flex h-10 w-full min-w-0 items-center justify-between gap-2 rounded-lg px-3 text-sm font-medium tracking-[-0.01em] text-inherit no-underline before:absolute before:inset-[-4px] before:rounded-[20px] before:content-[''] hoverable:hover:bg-foreground/[0.08] hoverable:hover:text-foreground focus-visible:outline-none focus-visible:shadow-[inset_0_0_0_2px_hsl(var(--ring))]";
+  "relative flex h-10 w-full min-w-0 items-center justify-between gap-2 rounded-lg px-3 text-sm font-medium tracking-[-0.01em] text-inherit no-underline transition-[color,background-color] duration-150 ease-out hoverable:hover:bg-foreground/[0.08] hoverable:hover:text-foreground focus-visible:outline-none focus-visible:shadow-[inset_0_0_0_2px_hsl(var(--ring))]";
+
+const dockSocials = [
+  { name: "GitHub", href: "https://github.com/jyotiogennavar" },
+  { name: "LinkedIn", href: "https://www.linkedin.com/in/jyoti-ogennavar/" },
+  { name: "Twitter", href: "https://x.com/JOgennavar" },
+  { name: "Peerlist", href: "https://peerlist.io/jyotiogennavar" },
+];
 
 // 60% travel (not 110%) so this small pill doesn't feel like a full-page slide.
 const panelVariants = {
@@ -166,7 +173,7 @@ export function SiteDock({ hidden = false }: SiteDockProps) {
     <nav
       ref={rootRef}
       data-lab-dock=""
-      className="fixed bottom-[calc(20px+env(safe-area-inset-bottom))] left-[50vw] z-20 -translate-x-1/2 drop-shadow-[0_8px_24px_hsl(0_0%_0%/0.12)] dark:drop-shadow-[0_8px_24px_hsl(0_0%_0%/0.55)]"
+      className="fixed bottom-[calc(20px+env(safe-area-inset-bottom))] left-[50vw] z-dropdown -translate-x-1/2 drop-shadow-[0_8px_24px_hsl(0_0%_0%/0.12)] dark:drop-shadow-[0_8px_24px_hsl(0_0%_0%/0.55)]"
       aria-label="Site"
       aria-hidden={hidden || undefined}
     >
@@ -231,7 +238,17 @@ export function SiteDock({ hidden = false }: SiteDockProps) {
                             initial="hidden"
                             animate="show"
                           >
-                       
+                            {dockSocials.map((social) => (
+                              <a
+                                key={social.name}
+                                className={dockLinkClass}
+                                href={social.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                <span className="truncate">{social.name}</span>
+                              </a>
+                            ))}
                           </motion.div>
                         ) : (
                           <div className="flex flex-col gap-0.5">
@@ -287,7 +304,7 @@ export function SiteDock({ hidden = false }: SiteDockProps) {
                     }}
                     className={dockControlClass}
                     initial={false}
-                    whileTap={reduce ? undefined : { scale: 0.97, transition: TAP }}
+                    whileTap={reduce ? undefined : { scale: 0.96, transition: TAP }}
                     onClick={toggleTheme}
                     aria-label={
                       mounted
@@ -345,7 +362,7 @@ function DockTab({
       aria-controls={active ? "lab-dock-panel" : undefined}
       aria-label={label}
       initial={false}
-      whileTap={reduce ? undefined : { scale: 0.97, transition: TAP }}
+      whileTap={reduce ? undefined : { scale: 0.96, transition: TAP }}
       animate={{
         gap: active ? 8 : 0,
         paddingInline: active ? 16 : 8,

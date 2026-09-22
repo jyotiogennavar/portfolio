@@ -91,7 +91,7 @@ function ExperimentCard({ experiment }: { experiment: LabExperiment }) {
   return (
     <article
       className={cn(
-        "relative min-w-0 overflow-hidden rounded-xl border border-border bg-card",
+        "relative min-w-0 overflow-hidden rounded-xl bg-card shadow-raised",
         wide && "md:col-span-2",
       )}
     >

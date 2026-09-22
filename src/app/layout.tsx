@@ -95,11 +95,11 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
       </head>
-      <body className={bricolage.variable}>
+      <body className={`${bricolage.variable} antialiased`}>
         <ThemeProvider>
           <a
             href="#content"
-            className="fixed start-4 top-4 z-[100] -translate-y-16 rounded-md bg-background px-3 py-2 text-sm font-medium text-foreground shadow-sm ring-2 ring-ring transition-transform duration-200 ease-out focus:translate-y-0 focus-visible:translate-y-0"
+            className="fixed start-4 top-4 z-toast -translate-y-16 rounded-md bg-background px-3 py-2 text-sm font-medium text-foreground shadow-raised transition-transform duration-150 ease-out focus:translate-y-0 focus-visible:translate-y-0"
           >
             Skip to content
           </a>
@@ -114,7 +114,7 @@ export default function RootLayout({
               <div className={containerClasses}>{children}</div>
             </main>
 
-            <footer className="w-full mt-auto">
+            <footer className="mt-auto w-full pb-[env(safe-area-inset-bottom)]">
               <div className={containerClasses}>
                 <Footer />
               </div>

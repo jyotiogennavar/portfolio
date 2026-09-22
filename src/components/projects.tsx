@@ -33,7 +33,7 @@ export const Projects = () => {
       <h2 className="text-sm text-stone-500 uppercase tracking-wide font-medium">Featured Projects</h2>
       <div className="mt-6 space-y-4">
         {projects.map((project, index) => (
-          <article key={index} className="p-4 border rounded-lg hover:bg-stone-50 transition-colors">
+          <article key={index} className="rounded-lg p-4 shadow-raised transition-[background-color] duration-150 ease-out hoverable:hover:bg-stone-50 dark:hoverable:hover:bg-stone-900">
             <h3 className="font-semibold text-lg">{project.title}</h3>
             <p className="text-stone-600 mt-2">{project.description}</p>
             <div className="flex flex-wrap gap-2 mt-3">

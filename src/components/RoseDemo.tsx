@@ -30,7 +30,7 @@ const RESET_SPRING = { type: "spring", duration: 0.5, bounce: 0 } as const;
 
 const RANGE_CLASS = [
   "m-0 h-4 w-full cursor-pointer appearance-none bg-transparent outline-none",
-  "focus-visible:rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#f5c518]",
+  "focus-visible:rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white",
   "[&::-webkit-slider-runnable-track]:h-[3px] [&::-webkit-slider-runnable-track]:rounded-full",
   "[&::-webkit-slider-runnable-track]:bg-[linear-gradient(to_right,#fff_var(--pct),rgba(255,255,255,0.18)_var(--pct))]",
   "[&::-webkit-slider-thumb]:mt-[-4.5px] [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:border-0 [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:shadow-none",
@@ -109,9 +109,9 @@ export function RoseDemo() {
             className={cn(
               "mt-[0.35rem] min-h-11 cursor-pointer justify-self-start rounded-full border border-white/55 bg-transparent px-5 py-[0.4rem] font-sans text-sm text-white",
               "transition-[opacity,background-color,transform] duration-150 ease",
-              "hoverable:hover:bg-white/[0.06] active:scale-[0.97]",
+              "hoverable:hover:bg-white/[0.06] active:scale-[0.96]",
               "motion-reduce:transition-[opacity,background-color] motion-reduce:active:scale-100",
-              "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-[#f5c518]",
+              "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-white",
               "disabled:cursor-default",
               dirty ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0",
             )}
@@ -185,7 +185,7 @@ function Formula({
   useMotionValueEvent(d, "change", setD);
 
   return (
-    <div className="mb-5 whitespace-pre-line text-start font-mono text-xs leading-relaxed tracking-[0.02em] text-[#8a8a8a]">
+    <div className="mb-5 whitespace-pre-line text-start font-mono text-xs tabular-nums leading-relaxed tracking-[0.02em] text-[#8a8a8a]">
       {`x = ${Math.round(r)}cos(t) − ${formatD(dd)}·cos(${Math.round(kk)}t)`}
       {"\n"}
       {`y = ${Math.round(r)}sin(t) − ${formatD(dd)}·sin(${Math.round(kk)}t)`}

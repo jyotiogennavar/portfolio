@@ -52,7 +52,7 @@ export function LabSurface({ embed = false }: LabSurfaceProps) {
         "bg-background text-foreground",
         embed
           ? "relative isolate size-full overflow-hidden"
-          : "fixed inset-0 z-50 overflow-y-auto overscroll-contain data-[locked=true]:overflow-hidden [&[data-reveal-pending]_[data-reveal]]:opacity-0 motion-reduce:[&[data-reveal-pending]_[data-reveal]]:opacity-100",
+          : "fixed inset-0 z-modal overflow-y-auto overscroll-contain data-[locked=true]:overflow-hidden [&[data-reveal-pending]_[data-reveal]]:opacity-0 motion-reduce:[&[data-reveal-pending]_[data-reveal]]:opacity-100",
       )}
       data-reveal-pending={embed ? undefined : "true"}
       data-locked={project ? "true" : "false"}
@@ -64,7 +64,7 @@ export function LabSurface({ embed = false }: LabSurfaceProps) {
           </noscript>
           <Link
             href="/"
-            className="fixed left-4 top-[calc(16px+env(safe-area-inset-top))] z-10 inline-flex min-h-11 items-center px-1 text-sm tracking-[-0.01em] text-muted-foreground no-underline hoverable:hover:text-foreground"
+            className="fixed left-4 top-[calc(16px+env(safe-area-inset-top))] z-10 inline-flex min-h-11 items-center rounded-md px-1 text-sm tracking-[-0.01em] text-muted-foreground no-underline transition-[color] duration-150 ease-out hoverable:hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             data-reveal="true"
           >
             Back to site

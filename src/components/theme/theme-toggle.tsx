@@ -26,7 +26,7 @@ export function ThemeToggle() {
     <button
       type="button"
       onClick={toggleTheme}
-      className="relative inline-flex h-10 w-10 items-center justify-center rounded-md text-sm text-stone-900 will-change-transform transition-[transform,background-color] duration-200 ease-out active:scale-[0.97] hoverable:hover:bg-stone-50 dark:text-stone-100 dark:hoverable:hover:bg-stone-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+      className="relative inline-flex h-10 w-10 items-center justify-center rounded-md text-sm text-stone-900 transition-[transform,background-color] duration-150 ease-out active:scale-[0.96] hoverable:hover:bg-stone-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background dark:text-stone-100 dark:hoverable:hover:bg-stone-700"
       aria-pressed={isDark}
       aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
     >

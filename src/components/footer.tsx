@@ -42,7 +42,7 @@ const socialLinks = [
 
 const Footer = () => {
   return (
-    <div className="mb-10 mt-20 border-t border-stone-200 pt-12 dark:border-stone-800">
+    <div className="mb-10 mt-20 border-t border-stone-200 pt-12 [border-top-width:var(--border-hairline)] dark:border-stone-800">
       <div className="flex flex-col items-center gap-8">
         <Image
           src="/sign-1.svg"

@@ -58,7 +58,7 @@ export function P({ children, ...props }: React.HTMLAttributes<HTMLParagraphElem
 
 export function A({ children, ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
   return (
-    <a {...props} className="break-words text-primary underline decoration-dotted decoration-from-font underline-offset-4 hoverable:hover:text-primary/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+    <a {...props} className="break-words text-primary underline decoration-dotted decoration-from-font underline-offset-4 transition-[color] duration-150 ease-out hoverable:hover:text-primary/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background">
       {children}
     </a>
   )
@@ -116,7 +116,7 @@ export function Pre({ children, ...props }: React.HTMLAttributes<HTMLPreElement>
   return (
     <pre
       {...props}
-      className="my-6 overflow-x-auto rounded-lg border bg-muted/60 p-4 text-sm leading-relaxed"
+      className="code-block my-6 overflow-x-auto rounded-lg border bg-muted/60 p-4 text-sm leading-relaxed"
     >
       {children}
     </pre>
@@ -167,7 +167,7 @@ export function Img(props: ImageProps) {
 
 export function NeedToKnow({ children }: { children: React.ReactNode }) {
   return (
-    <Card className="border-amber-200 bg-amber-50 dark:border-amber-800 dark:bg-amber-950/20 my-8">
+    <Card className="my-8 border border-amber-200 bg-amber-50 shadow-none dark:border-amber-800 dark:bg-amber-950/20">
       <CardContent className="p-6">
         <div className="flex items-start gap-3">
           <Info className="mt-0.5 h-5 w-5 shrink-0 pointer-events-none text-amber-600 dark:text-amber-400" />
@@ -190,7 +190,7 @@ export function HowItWorks({
 }) {
   return (
     <details className="not-prose my-10 rounded-xl border border-border bg-muted/40 px-5 py-1">
-      <summary className="flex min-h-11 cursor-pointer list-none items-center font-semibold marker:content-none [&::-webkit-details-marker]:hidden">
+      <summary className="flex min-h-11 cursor-pointer list-none items-center font-semibold marker:content-none transition-[color] duration-150 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background [&::-webkit-details-marker]:hidden">
         {title}
       </summary>
       <div className="pb-5 pt-2 text-sm leading-7 text-muted-foreground [&_a]:text-foreground [&_pre]:my-4 [&_pre]:overflow-x-auto [&_pre]:rounded-lg [&_pre]:border [&_pre]:bg-muted/60 [&_pre]:p-4 [&_pre]:text-sm">
@@ -202,7 +202,7 @@ export function HowItWorks({
 
 export function MoreAbout({ children }: { children: React.ReactNode }) {
   return (
-    <Card className="border-blue-200 bg-blue-50 dark:border-blue-800 dark:bg-blue-950/20 my-8">
+    <Card className="my-8 border border-blue-200 bg-blue-50 shadow-none dark:border-blue-800 dark:bg-blue-950/20">
       <CardContent className="p-6">
         <div className="space-y-4 text-blue-700 dark:text-blue-300 prose prose-sm">{children}</div>
       </CardContent>
@@ -224,7 +224,7 @@ export function ProjectLink({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="not-prose mt-10 flex items-start gap-3 rounded-xl bg-card p-5 text-foreground no-underline shadow-none transition-[box-shadow] duration-200 ease hoverable:hover:shadow-[0_8px_32px_rgba(236,72,153,0.4)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+      className="not-prose mt-10 flex items-start gap-3 rounded-xl bg-card p-5 text-foreground no-underline shadow-raised transition-[box-shadow] duration-150 ease-out hoverable:hover:shadow-raised-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
     >
       <ExternalLink className="mt-0.5 h-5 w-5 shrink-0 text-muted-foreground" aria-hidden="true" />
       <span>

@@ -66,7 +66,7 @@ export function WorkDetail({
               <button
                 type="button"
                 ref={backRef}
-                className="relative inline-flex size-5 shrink-0 cursor-pointer touch-manipulation items-center justify-center border-0 bg-transparent p-0 text-muted-foreground before:absolute before:inset-[-12px] before:content-[''] hoverable:hover:text-foreground focus-visible:outline-none focus-visible:shadow-[inset_0_0_0_2px_hsl(var(--ring))] active:scale-[0.96]"
+                className="relative inline-flex size-5 shrink-0 cursor-pointer touch-manipulation items-center justify-center border-0 bg-transparent p-0 text-muted-foreground transition-[color,transform] duration-150 ease-out before:absolute before:inset-[-12px] before:content-[''] hoverable:hover:text-foreground focus-visible:outline-none focus-visible:shadow-[inset_0_0_0_2px_hsl(var(--ring))] active:scale-[0.96]"
                 onClick={onClose}
                 aria-label="Back to projects"
               >
@@ -130,8 +130,8 @@ export function WorkDetail({
               <motion.a
                 className={
                   contained
-                    ? "mt-3 inline-flex text-xs text-foreground underline decoration-border underline-offset-[0.2em] hoverable:hover:decoration-current"
-                    : "mt-5 inline-flex text-[15px] text-foreground underline decoration-border underline-offset-[0.2em] hoverable:hover:decoration-current"
+                    ? "mt-3 inline-flex min-h-10 items-center text-xs text-foreground underline decoration-border underline-offset-[0.2em] transition-[text-decoration-color] duration-150 ease-out hoverable:hover:decoration-current"
+                    : "mt-5 inline-flex min-h-10 items-center text-[15px] text-foreground underline decoration-border underline-offset-[0.2em] transition-[text-decoration-color] duration-150 ease-out hoverable:hover:decoration-current"
                 }
                 href={project.href}
                 target="_blank"

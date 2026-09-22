@@ -34,14 +34,15 @@ const TechStack: React.FC = () => {
   return (
     <>
       <h2 className="flex items-center gap-2 text-sm font-medium uppercase tracking-wide text-stone-500 dark:text-stone-400">
-        <Wrench size={16} className="pointer-events-none text-stone-500 dark:text-stone-400" />
+        <Wrench size={16} className="pointer-events-none select-none text-stone-500 dark:text-stone-400" />
         Technologies I work with
       </h2>
 
       <ul className="mt-6 flex list-none flex-wrap gap-2">
         {techStack.map(({ icon, label }) => (
-          <li key={label} className="flex items-center gap-x-2 whitespace-nowrap rounded-lg border border-text-card-foreground px-4 py-2">
-              {icon} {label}
+          <li key={label} className="flex items-center gap-x-2 whitespace-nowrap rounded-lg border border-border px-4 py-2 [border-width:var(--border-hairline)]">
+              <span className="pointer-events-none select-none" aria-hidden="true">{icon}</span>
+              {label}
           </li>
         ))}
       </ul>

@@ -153,7 +153,7 @@ export function WorkList({ openId, onOpen, contained = false }: WorkListProps) {
 
   return (
     <div
-      className={contained ? "relative -ml-2 mt-0" : "relative -ml-4 mt-3.5"}
+      className={contained ? "relative isolate -ml-2 mt-0" : "relative isolate -ml-4 mt-3.5"}
       ref={wrapRef}
       onPointerMove={onPointerMove}
       onPointerLeave={leaveSoon}
@@ -202,10 +202,10 @@ export function WorkList({ openId, onOpen, contained = false }: WorkListProps) {
             >
               <motion.button
                 type="button"
-                className="flex cursor-pointer rounded-2xl border-0 bg-transparent px-4 py-2 text-left text-inherit no-underline hover:no-underline focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-ring"
+                className="flex min-h-10 cursor-pointer rounded-2xl border-0 bg-transparent px-4 py-2 text-left text-inherit no-underline transition-[color] duration-150 ease-out hover:no-underline focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-ring"
                 aria-label={`${project.name}, ${project.period}`}
                 initial={false}
-                whileTap={reduce ? undefined : { scale: 0.97 }}
+                whileTap={reduce ? undefined : { scale: 0.96 }}
                 onClick={() => onOpen(project)}
                 onPointerEnter={() => hover(project, "pointer")}
                 onFocus={() => hover(project, "keyboard")}
@@ -242,8 +242,8 @@ export function WorkList({ openId, onOpen, contained = false }: WorkListProps) {
                   <motion.p
                     className={
                       contained
-                        ? "relative z-[8] m-0 text-xs leading-tight tracking-[-0.01em] text-muted-foreground/85"
-                        : "relative z-[8] m-0 text-sm leading-tight tracking-[-0.01em] text-muted-foreground/85"
+                        ? "relative z-[8] m-0 text-xs leading-tight tracking-[-0.01em] text-muted-foreground/85 tabular-nums"
+                        : "relative z-[8] m-0 text-sm leading-tight tracking-[-0.01em] text-muted-foreground/85 tabular-nums"
                     }
                     layoutId={reduce ? undefined : `project-year-${project.id}`}
                     style={{ borderRadius: 0 }}

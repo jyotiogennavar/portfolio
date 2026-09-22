@@ -3,35 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-  html {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-synthesis: none;
-    text-underline-position: from-font;
-    text-decoration-skip-ink: auto;
-  }
-
-  body {
-    font-family: var(--font-bricolage), sans-serif;
-    line-height: 1.55;
-    overflow-wrap: break-word;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    text-wrap: balance;
-    scroll-margin-top: 5rem;
-  }
-
-  img {
-    outline: 1px solid hsl(0 0% 0% / 0.08);
-    outline-offset: -1px;
-  }
-
   :root {
     --background: 24 9.8% 98%;
 
@@ -69,7 +40,7 @@
 
     --input: 214.3 31.8% 91.4%;
 
-    --ring: 222, 10%, 6%;
+    --ring: 0 0% 0%;
 
     --chart-1: 12 76% 61%;
 
@@ -82,8 +53,36 @@
     --chart-5: 27 87% 67%;
 
     --radius: 0.5rem;
+
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+
+    --z-dropdown: 100;
+    --z-modal: 200;
+    --z-tooltip: 300;
+    --z-toast: 400;
+
+    --border-hairline: 1px;
+
+    --elevation-raised:
+      0 0 0 1px rgb(0 0 0 / 0.05),
+      0 1px 3px rgb(0 0 0 / 0.05),
+      0 4px 10px -4px rgb(0 0 0 / 0.05);
+    --elevation-raised-hover:
+      0 0 0 1px rgb(0 0 0 / 0.07),
+      0 1px 3px rgb(0 0 0 / 0.07),
+      0 4px 10px -4px rgb(0 0 0 / 0.08);
   }
-  
+
+  @media only screen and (min-device-pixel-ratio: 2),
+    only screen and (min-resolution: 192dpi) {
+    :root {
+      --border-hairline: 0.5px;
+    }
+  }
+
   .dark {
     --background: 24, 9.8%, 3.9%;
 
@@ -121,7 +120,7 @@
 
     --input: 217.2 32.6% 17.5%;
 
-    --ring: 212.7 26.8% 83.9%;
+    --ring: 0 0% 100%;
 
     --chart-1: 220 70% 50%;
 
@@ -132,10 +131,60 @@
     --chart-4: 280 65% 60%;
 
     --chart-5: 340 75% 55%;
+
+    --elevation-raised: 0 0 0 1px rgb(255 255 255 / 0.09);
+    --elevation-raised-hover: 0 0 0 1px rgb(255 255 255 / 0.14);
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-synthesis: none;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: auto;
+  }
+
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: var(--font-bricolage), sans-serif;
+    font-weight: var(--font-weight-normal);
+    line-height: 1.55;
+    overflow-wrap: break-word;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  [id] {
+    scroll-margin-top: 5rem;
+  }
+
+  img {
+    outline: 1px solid rgb(0 0 0 / 0.1);
+    outline-offset: -1px;
   }
 
   .dark img {
-    outline-color: hsl(0 0% 100% / 0.08);
+    outline-color: rgb(255 255 255 / 0.1);
+  }
+
+  ::selection {
+    background-color: rgb(0 0 0 / 0.12);
+    color: inherit;
+  }
+
+  .dark ::selection {
+    background-color: rgb(255 255 255 / 0.16);
   }
 
   * {
@@ -144,6 +193,20 @@
 
   body {
     @apply bg-background text-foreground;
+  }
+
+  .code-block::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .code-block::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+  }
+
+  .dark .code-block::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
   }
 
   @media (prefers-reduced-motion: reduce) {

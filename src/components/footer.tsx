@@ -52,8 +52,6 @@ const Footer = () => {
           className="pointer-events-none h-auto w-[min(100%,21rem)] select-none outline-none dark:invert"
         />
 
-
-
         <div className="flex w-full flex-wrap items-center justify-between gap-4 pt-1 text-sm text-stone-500 max-[425px]:flex-col max-[425px]:justify-center dark:text-stone-400">
         <nav aria-label="Social links" className="flex items-center gap-1">
           {socialLinks.map(({ name, href, icon: Icon }) => (

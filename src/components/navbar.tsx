@@ -4,7 +4,6 @@ import Link from "next/link"
 
 export const Navbar = () => {
   const navItems = [
-    { name: "About me", href: "/about-me" },
     // { name: "Projects", href: "/projects" },
     { name: "Blogs", href: "/blog" },
     { name: "Lab", href: "/lab" },

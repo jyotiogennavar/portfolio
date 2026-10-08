@@ -16,6 +16,7 @@ import {
   Eye,
 } from "lucide-react";
 import Link from "next/link";
+import { homeProjects, mediumPosts } from "@/lib/home-content";
 
 
 // Animation variants
@@ -71,7 +72,7 @@ export default function Home() {
       animate="visible"
     >
       {/* Hero Section */}
-      <motion.main className="mt-8 mb-8" variants={itemVariants}>
+      <motion.div className="mt-8 mb-8" variants={itemVariants}>
         <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-center md:items-center">
           <div className="flex-shrink-0">
             <div className="relative">
@@ -94,7 +95,7 @@ export default function Home() {
             </p>
           </div>
         </div>
-      </motion.main>
+      </motion.div>
 
 
       {/* Projects */}
@@ -104,51 +105,34 @@ export default function Home() {
           Projects
         </h2>
         <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
-          <Card className="flex h-full flex-col rounded-xl p-4">
-            <div className="flex-1">
-              <CardTitle className="mb-3 text-lg">World Wide Wonder</CardTitle>
-              <CardDescription className="mb-4 text-pretty text-stone-600 dark:text-stone-400">
-                A content-driven travel blog built with Next.js and Sanity CMS,
-                designed for fast performance, clean UI, and easy content
-                management with structured schemas and real-time previews.
-              </CardDescription>
-            </div>
-            <div className="mt-auto flex flex-wrap items-center gap-2">
-              <Button variant="outline" size="sm" asChild>
-                <Link href="https://github.com/jyotiogennavar/world-wide-wonder" target="_blank" rel="noopener noreferrer">
-                  <Github className="h-4 w-4" />
-                  View on GitHub
-                </Link>
-              </Button>
-              <p className="text-sm text-stone-500 dark:text-stone-400">
-                Live site coming soon
-              </p>
-            </div>
-          </Card>
-          <Card className="flex h-full flex-col rounded-xl p-4">
-            <div className="flex-1">
-              <CardTitle className="mb-3 text-lg">
-                Dreamfund 
-              </CardTitle>
-              <CardDescription className="mb-4 text-pretty text-stone-600 dark:text-stone-400">
-                A goal-based savings tracker that helps you set a target, track contributions, understand what&apos;s left, and know how much you need to save each month to reach your goal.
-              </CardDescription>
-            </div>
-            <div className="mt-auto flex flex-wrap items-center gap-2">
-              <Button variant="outline" size="sm" asChild>
-                <Link href="https://github.com/jyotiogennavar/dreamfund" target="_blank" rel="noopener noreferrer">
-                  <Github className="h-4 w-4" />
-                  View on GitHub
-                </Link>
-              </Button>
-              <Button variant="outline" size="sm" asChild>
-                <Link href="https://dreamfund-rose.vercel.app/" target="_blank" rel="noopener noreferrer">
-                  <Eye className="h-4 w-4" />
-                  View Live
-                </Link>
-              </Button>
-            </div>
-          </Card>
+          {homeProjects.map((project) => (
+            <Card key={project.title} className="flex h-full flex-col rounded-xl p-4">
+              <div className="flex-1">
+                <CardTitle className="mb-3 text-lg">{project.title}</CardTitle>
+                <CardDescription className="mb-4 text-pretty text-stone-600 dark:text-stone-400">
+                  {project.description}
+                </CardDescription>
+              </div>
+              <div className="mt-auto flex flex-wrap items-center gap-2">
+                <Button variant="outline" size="sm" asChild>
+                  <Link href={project.github} target="_blank" rel="noopener noreferrer">
+                    <Github className="h-4 w-4" />
+                    View on GitHub
+                  </Link>
+                </Button>
+                {"live" in project ? (
+                  <Button variant="outline" size="sm" asChild>
+                    <Link href={project.live} target="_blank" rel="noopener noreferrer">
+                      <Eye className="h-4 w-4" />
+                      View Live
+                    </Link>
+                  </Button>
+                ) : (
+                  <p className="text-sm text-stone-500 dark:text-stone-400">{project.note}</p>
+                )}
+              </div>
+            </Card>
+          ))}
         </div>
       </motion.section>
 
@@ -160,40 +144,22 @@ export default function Home() {
         </h2>
 
         <div className="mt-6 space-y-6">
-          <Link
-            href="https://medium.com/design-bootcamp/boosting-website-visibility-a-complete-guide-to-on-page-seo-for-web-developers-7da71d5f95d2"
-            target="_blank"
-            title="Boosting Website Visibility: A Complete Guide to On-Page SEO for Web Developers"
-            className="block rounded-md transition-[color] duration-150 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-          >
-            <article>
-              <h3 className="font-semibold">
-                Boosting Website Visibility: A Complete Guide to On-Page SEO for
-                Web Developers
-              </h3>
-              <p className="mt-2 text-pretty text-sm text-stone-600 dark:text-stone-400">
-                Learn how to optimize your website&apos;s on-page SEO to improve
-                visibility and ranking on search engines.
-              </p>
-            </article>
-          </Link>
-
-          <Link
-            href="https://medium.com/design-bootcamp/website-sitemaps-101-your-websites-guide-to-success-3bf7c04129ce"
-            target="_blank"
-            title="Website Sitemaps 101: your website’s guide to success"
-            className="block rounded-md transition-[color] duration-150 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-          >
-            <article>
-              <h3 className="font-semibold">
-                Website Sitemaps 101: your website’s guide to success
-              </h3>
-              <p className="mt-2 text-pretty text-sm text-stone-600 dark:text-stone-400">
-                Discover the importance of sitemaps for SEO and user experience,
-                and learn how to create and submit them effectively.
-              </p>
-            </article>
-          </Link>
+          {mediumPosts.map((post) => (
+            <Link
+              key={post.href}
+              href={post.href}
+              target="_blank"
+              title={post.title}
+              className="block rounded-md transition-[color] duration-150 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            >
+              <article>
+                <h3 className="font-semibold">{post.title}</h3>
+                <p className="mt-2 text-pretty text-sm text-stone-600 dark:text-stone-400">
+                  {post.description}
+                </p>
+              </article>
+            </Link>
+          ))}
 
           <Link
             href="/blog"
@@ -245,7 +211,6 @@ export default function Home() {
         <TechStack />
       </motion.section>
 
- 
       {/* Scroll to Top Button */}
       {showScrollTop && (
         <motion.button

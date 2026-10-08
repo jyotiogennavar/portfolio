@@ -5,6 +5,8 @@ import "./globals.css"
 import { ThemeProvider } from "@/components/theme/theme-provider"
 import { Navbar } from "@/components/navbar"
 import Footer from "@/components/footer"
+import { organizationJsonLd, personJsonLd, serializeJsonLd } from "@/lib/jsonld"
+import { SITE_DESCRIPTION } from "@/lib/site"
 
 const bricolage = Bricolage_Grotesque({
   variable: "--font-bricolage",
@@ -17,8 +19,7 @@ export const metadata: Metadata = {
     default: "Jyoti Ogennavar - Frontend Developer",
     template: "%s | Jyoti Ogennavar",
   },
-  description:
-    "Frontend Developer with 4+ years of experience crafting responsive, accessible web applications. Specializing in React, Next.js, and modern web technologies.",
+  description: SITE_DESCRIPTION,
   keywords: [
     "Frontend Developer",
     "React Developer",
@@ -48,8 +49,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://jyotiogennavar.com",
     title: "Jyoti Ogennavar - Frontend Developer",
-    description:
-      "Frontend Developer with 3+ years of experience crafting responsive, accessible web applications. Specializing in React, Next.js, and modern web technologies.",
+    description: SITE_DESCRIPTION,
     siteName: "Jyoti Ogennavar Portfolio",
     images: [
       {
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Jyoti Ogennavar - Frontend Developer",
-    description: "Frontend Developer with 3+ years of experience crafting responsive, accessible web applications.",
+    description: SITE_DESCRIPTION,
     creator: "@JOgennavar", // Replace with your actual Twitter handle
     images: ["/og-image.png"],
   },
@@ -94,8 +94,17 @@ export default function RootLayout({
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
+        <link rel="describedby" href="/llms.txt" />
       </head>
       <body className={`${bricolage.variable} antialiased`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(personJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(organizationJsonLd) }}
+        />
         <ThemeProvider>
           <a
             href="#content"

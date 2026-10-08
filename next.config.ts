@@ -13,6 +13,11 @@ const nextConfig = {
   transpilePackages: ['next-mdx-remote'],
   // Lighthouse only inspects <head>. Next 15 streams metadata into <body> unless the UA is listed.
   htmlLimitedBots: /.*/,
+  outputFileTracingIncludes: {
+    "/api/markdown/[[...slug]]": ["./src/content/blog/**/*"],
+    "/llms.txt": ["./src/content/blog/**/*"],
+    "/sitemap.xml": ["./src/content/blog/**/*"],
+  },
 }
 
 export default withMDX(nextConfig)
